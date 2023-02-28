@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Header from '../components/PageParts/header'
+import Header from '../components/PageParts/Header'
 
 export default function Home() {
   return (

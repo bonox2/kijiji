@@ -1,8 +1,16 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import useSWR from 'swr';
+import { getCategories } from '../../services/api';
 
 export default function Header() {
+  const { data, error } = useSWR('/categories', getCategories);
+
+  useEffect(() => {
+    console.log({data});
+  }, [data])
+  
   return (
     <header>
       <div className="container ml-auto mr-auto flex justify-between items-center flex-row">
@@ -29,7 +37,7 @@ export default function Header() {
       <nav>
         <div className="container">
           <ul>
-            <li>Cars & Vahicle</li>
+            <li>Cars & Vehicle</li>
             <li>Real Estate</li>
           </ul>
         </div>
