@@ -1,30 +1,39 @@
-import { useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import useSWR from 'swr';
-import { getCategories } from '../../services/api';
+import { useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import useSWR from "swr";
+import { getCategories } from "../../services/api";
 
 export default function Header() {
-  const { data, error } = useSWR('/categories', getCategories);
+  const { data, error } = useSWR("/categories", getCategories);
 
   useEffect(() => {
-    console.log({data});
-  }, [data])
-  
+    console.log({ data });
+  }, [data]);
+
   return (
     <header>
-      <div className="container ml-auto mr-auto flex justify-between items-center flex-row">
+      <div className="container ml-auto mr-auto flex justify-between items-center flex-row pt-3.5">
         <div>
           <Image src="/logo.png" alt="Logo" width={65} height={35} />
         </div>
         <div className="text-sm  ">
-          <form className="flex justify-center items-center flex-row flex-nowrap w-min ">
-                <input type="text" placeholder="What are you looking for?" className='border-0 rounded
-                 border-gray-300 border-style: solid;'/>
-                <div className="whitespace-nowrap flex wrap-nowrap transition-all duration-3000 bg-transparent hover:bg-blue-500 text-blue-400 font-semibold hover:text-white text-intherit  py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                  <button>All categories</button>
-                </div>
-                <button type="submit" className='border-0 rounded border-gray-300 border-style: solid; ' >Search</button>
+          <form className="flex justify-center items-center  flex-nowrap w-min text-gray-400">
+            <div className="whitespace-nowrap flex text-center justify-center items-center  transition-all duration-3000 bg-transparent  text-intherit  py-3 px-5 border border-r-0 rounded-l ">
+              <input
+                type="text"
+                placeholder="What are you looking for?"
+                className="flex text-center  pr-3"
+              />
+                <button className="whitespace-nowrap  bg-transparent text-intherit border-l flex text-center pl-3">All categories</button>
+             
+            </div>
+            <button
+              type="submit"
+              className="whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 bg-transparent text-purple-900 hover:bg-purple-900  font-semibold hover:text-white text-intherit  py-3 px-8 border hover:border-transparent rounded "
+            >
+              Search
+            </button>
           </form>
         </div>
         <div className="headerButtons">
