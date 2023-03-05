@@ -11,3 +11,12 @@ export function getCategories(url){
     return api.get(url).then(res => res.data.data)
 }
 
+export function mapCategories(categories){
+    return categories.map(category => {
+        return {
+            id: category.id,
+            name: category.name,
+            url: category.url
+        }
+    })
+}
