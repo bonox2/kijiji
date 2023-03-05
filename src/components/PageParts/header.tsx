@@ -2,14 +2,12 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
-import { getCategories, displayCategories } from "../../services/api";
+import { getCategories} from "../../services/api";
 
 export default function Header() {
-  const { data, error } = useSWR("/categories", getCategories);
+  const { data:categoriesData, error } = useSWR("/categories", getCategories);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const categoryNames = categoriesData?.map((categoryData)=> categoryData.attributes.name)
 
 
 
@@ -31,8 +29,9 @@ export default function Header() {
                 All categories
               </button>
               <ul>
-                <li>Cars & Vehicle</li>
-                <li>Real Estate</li>
+                {categoryNames?.map((categoryName)=>(
+                  <li key={categoryName} >{categoryName}</li>
+                ))}
               </ul>
             </div>
             <button

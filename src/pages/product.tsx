@@ -1,7 +1,9 @@
 import Image from "next/image";
 
+
 export default function Product() {
   return (
+
     <section>
       <main className="container mx-auto my-[20px] flex flex-nowrap justify-between">
         <article className="w-[500px];">
