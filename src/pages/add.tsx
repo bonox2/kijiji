@@ -1,17 +1,17 @@
 import Image from "next/image";
-
+import Header from "../components/PageParts/Header";
 
 export default function Product() {
   return (
-
-    <section>
+    <body className="bg-gray-100">
+      <Header />
       <main className="container mx-auto my-[20px] flex flex-nowrap justify-between">
         <article className="w-[500px];">
           <section className="flex justify-center items-start flex-col">
-            <h1 className="text-[22px] font-bold leading-[26px] text-[#3e4153] my-0;">
+            <h1 className="text-[24px] font-bold  text-[#3e4153] my-0;">
               BRAND NEW IN BOX. HOME GYM SET for $1299. RETAILS $3000
             </h1>
-            <span className="text-[#37a864] text-2xl;">$1,299</span>
+            <span className="text-[24px] text-[#37a864] ;">$1,299</span>
           </section>
           <section>
             <Image
@@ -45,12 +45,20 @@ export default function Product() {
           <span>Posted over a month ago</span>
           <span>Location: 1234 Main St, New York, NY 10001</span>
           <div className=" flex flex-col justify-center items-center rounded bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)] mb-5 px-5 py-[25px]">
-            <h3 className="box-border text-[#373373] text-base relative text-center mt-0 mb-5 mx-0 px-5 py-0;">
-              Contact name
+            <h3 className="box-border text-[18px] text-indigo-900 text-base relative text-center font-medium px-[20px]  mb-5 ;">
+              Contact <span>name</span>
             </h3>
             <form action="submit" name="contactTo">
-              <textarea name="message" className="text-[#8e909b]">Hi, I am interested! Please contact me if this is still available.</textarea>
-              <button type="submit" className="text-white py-2 w-[100%] bg-[#3e4153] rounded">Send message</button>
+              <textarea name="message" className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full">
+                Hi, I am interested! Please contact me if this is still
+                available.
+              </textarea>
+              <button
+                type="submit"
+                className="text-white py-2 w-[100%] bg-[#3e4153] rounded"
+              >
+                Send message
+              </button>
             </form>
           </div>
           <div>
@@ -64,6 +72,6 @@ export default function Product() {
           </div>
         </aside>
       </main>
-    </section>
+    </body>
   );
 }
