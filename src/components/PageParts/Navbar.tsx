@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import React, { useState } from "react";
-import NavItem from "./NavItem";
+import useSWR from "swr";
+import { getCategories } from "../../services/api";
+
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
@@ -11,36 +12,20 @@ const MENU_LIST = [
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
+  const { data: categoriesData, error } = useSWR("/categories", getCategories);
+
+  const categoryNames = categoriesData?.map(
+    (categoryData) => categoryData.attributes.name
+  );
 
   return (
-    <header>
-      <nav className={`nav`}>
-          <a>
-            <h1 className="logo">CodeWithMarish</h1>
-          </a>
-        <div
-          onClick={() => setNavActive(!navActive)}
-          className={`nav__menu-bar`}
-        >
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div className={`${navActive ? "active" : ""} nav__menu-list`}>
-          {MENU_LIST.map((menu, idx) => (
-            <div
-              onClick={() => {
-                setActiveIdx(idx);
-                setNavActive(false);
-              }}
-              key={menu.text}
-            >
-              <NavItem active={activeIdx === idx} {...menu} />
-            </div>
-          ))}
-        </div>
-      </nav>
-    </header>
+    <>
+      <ul>
+        {categoryNames?.map((categoryName) => (
+          <li key={categoryName}>{categoryName}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 

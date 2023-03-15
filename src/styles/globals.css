@@ -3,35 +3,3 @@
 @tailwind utilities;
 
 
-a {
-    @apply no-underline text-inherit;
-  }
-  header {
-    @apply sticky z-30 top-0;
-  }
-  nav {
-    @apply flex justify-between items-center bg-[#f1f1f1] p-4;
-  }
-  .nav__menu-bar {
-    @apply flex flex-col gap-y-1.5 cursor-pointer md:hidden;
-  }
-  .nav__menu-bar div {
-    @apply w-10 h-1 bg-[black] rounded-sm;
-  }
-  .nav__menu-list {
-    @apply flex flex-col fixed w-72 gap-y-6 transition-all duration-[0.2s] min-h-[calc(100vh_-_60px)] bg-[#f1f1f1] px-4 py-6 -right-72 top-[60px] md:flex-row md:min-h-fit md:w-fit md:gap-x-6 md:items-center;
-  }
-  .nav__menu-list.active {
-    @apply right-0;
-  }
-  .nav__link {
-    @apply text-lg relative transition-all duration-[0.2s] hover:font-[bold] md:before:content-[''] md:before:absolute md:before:w-[0%] md:before:h-1.5 md:before:bg-[black] md:before:transition-all md:before:duration-[0.2s] md:before:left-0 md:before:-bottom-4 md:hover:before:w-full;
-  }
-  .center {
-    @apply min-h-[600px] flex justify-center items-center;
-  }
-  @media screen and (min-width: 768px) {
-    .nav__menu-list {
-      position: unset;
-    }
-  }
