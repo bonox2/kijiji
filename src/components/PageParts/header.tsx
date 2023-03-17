@@ -1,10 +1,15 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./Navbar";
+import useSWR from "swr";
+import { getCategories } from "../../services/api";
 
-export default function Header() {
+export default function Header() { 
+  const { data: categoriesData, error } = useSWR("/categories", getCategories);
 
+  const categoryNames = categoriesData?.map(
+    (categoryData) => categoryData.attributes.name
+  );
   
 
   return (
@@ -22,8 +27,12 @@ export default function Header() {
                   placeholder="What are you looking for?"
                   className="flex text-center  pr-3"
                 />
-                <Navbar className="whitespace-nowrap bg-transparent text-intherit border-l flex text-center pl-3" />
-                
+                <select>
+                  <option selected disabled>All categories</option>
+        {categoryNames?.map((categoryName) => (
+          <option key={categoryName} value={categoryName}>{categoryName}</option>
+        ))}
+      </select>
               </div>
               <button
                 type="submit"

@@ -13,19 +13,26 @@ const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
   const { data: categoriesData, error } = useSWR("/categories", getCategories);
+  const { data: subCategoriesData  } = useSWR("/subcategories", getCategories);
 
   const categoryNames = categoriesData?.map(
     (categoryData) => categoryData.attributes.name
   );
+  const subCategoryNames = subCategoriesData?.map(
+    (subCategoryData) => subCategoryData.attributes.name
+  );
 
   return (
-    <>
+    <nav>
       <ul>
         {categoryNames?.map((categoryName) => (
           <li key={categoryName}>{categoryName}</li>
         ))}
+        {subCategoryNames?.map((subCategoryNames) => (
+          <li key={subCategoryNames}>{subCategoryNames}</li>
+        ))}
       </ul>
-    </>
+    </nav>
   );
 };
 
