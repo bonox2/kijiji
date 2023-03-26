@@ -17,9 +17,6 @@ export default function Navbar () {
   const categoryNames = categoriesData?.map(
     (categoryData) => categoryData.attributes.name
   );
-  const categoryId = categoriesData?.map(
-    (categoryData) => categoryData.id
-  );
   const [menuList, setMenuList] = useState(false);
   return (
     <nav className="container mx-auto relative">
@@ -27,7 +24,7 @@ export default function Navbar () {
         {categoryNames?.map((categoryName) => (
           <li
             onClick={() => setMenuList(!menuList)}
-            className="mr-12 py-6 font-medium text-[#373373]
+            className="mr-12 py-6 font-medium text-[#373373] border-b-transparent border-b-4
              hover:cursor-pointer hover:border-b-4 hover:border-[#37a864] 
              box-border "
             key={categoryName}

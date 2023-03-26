@@ -17,7 +17,7 @@ export default function Header() {
       <header className="bg-white drop-shadow-md  ">
         <div className="container mx-auto py-5 flex justify-between items-center flex-row">
           <div>
-            <Image src="/logo.png" alt="Logo" width={65} height={35} />
+            <Image src="/logo.png" alt="Logo" width={65} height={0} />
           </div>
           <div className="text-sm  ">
             <form className="flex justify-center items-center  flex-nowrap w-min text-gray-400">
@@ -29,7 +29,7 @@ export default function Header() {
                 />
                 <select defaultValue="All categories">
         {categoryNames?.map((categoryName) => (
-          <option key={categoryName} value={categoryName}>{categoryName}</option>
+          <option key={categoryName}>{categoryName}</option>
         ))}
       </select>
               </div>
