@@ -27,8 +27,7 @@ export default function Header() {
                   placeholder="What are you looking for?"
                   className="flex text-center  pr-3"
                 />
-                <select>
-                  <option selected disabled>All categories</option>
+                <select defaultValue="All categories">
         {categoryNames?.map((categoryName) => (
           <option key={categoryName} value={categoryName}>{categoryName}</option>
         ))}

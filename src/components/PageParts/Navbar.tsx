@@ -1,29 +1,28 @@
-import Link from "next/link";
+
 import React, { useState } from "react";
 import useSWR from "swr";
 import { getCategories } from "../../services/api";
+import NavList from "./NavList";
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
   { text: "About Us", href: "/about" },
   { text: "Contact", href: "/contact" },
 ];
-const Navbar = () => {
+export default function Navbar () {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
-  const { data: categoriesData, error } = useSWR("/categories", getCategories);
-  const { data: subCategoriesData } = useSWR("/subcategories", getCategories);
+  const { data: categoriesData, error } = useSWR("/categories?populate=*", getCategories);
 
   const categoryNames = categoriesData?.map(
     (categoryData) => categoryData.attributes.name
   );
-  const subCategoryNames = subCategoriesData?.map(
-    (subCategoryData) => subCategoryData.attributes.name
+  const categoryId = categoriesData?.map(
+    (categoryData) => categoryData.id
   );
-
   const [menuList, setMenuList] = useState(false);
   return (
-    <nav className="container mx-auto">
+    <nav className="container mx-auto relative">
       <ul className="flex justify-start">
         {categoryNames?.map((categoryName) => (
           <li
@@ -35,11 +34,7 @@ const Navbar = () => {
           >
             {categoryName}
             {menuList && (
-              <ul className="flex flex-col">
-                {subCategoryNames?.map((subCategoryName) => (
-                  <li key={subCategoryName}>{subCategoryName}</li>
-                ))}
-              </ul>
+              <NavList/>
             )}
           </li>
         ))}
@@ -48,4 +43,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+
