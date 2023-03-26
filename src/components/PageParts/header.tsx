@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-white   ">
+      <header className="bg-white drop-shadow-md  ">
         <div className="container mx-auto py-5 flex justify-between items-center flex-row">
           <div>
             <Image src="/logo.png" alt="Logo" width={65} height={35} />
@@ -36,7 +36,7 @@ export default function Header() {
               </div>
               <button
                 type="submit"
-                className="whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 bg-transparent text-purple-900 hover:bg-purple-900  font-semibold hover:text-white text-intherit  py-3 px-8 border hover:border-transparent rounded "
+                className="whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 bg-transparent text-[#373373] hover:bg-[#373373] font-semibold hover:text-white text-intherit  py-3 px-8 border hover:border-transparent rounded "
               >
                 Search
               </button>

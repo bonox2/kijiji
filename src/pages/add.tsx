@@ -3,7 +3,7 @@ import Header from "../components/PageParts/Header";
 
 export default function Product() {
   return (
-      <main className="container mx-auto my-[20px] flex flex-nowrap justify-between bg-gray-100">
+      <main className="container mx-auto py-[20px] flex flex-nowrap justify-between ">
         <article className="w-[500px];">
           <section className="flex justify-center items-start flex-col">
             <h1 className="text-[24px] font-bold  text-[#3e4153] my-0;">
