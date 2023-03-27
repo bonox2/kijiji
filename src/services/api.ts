@@ -11,3 +11,6 @@ export function getCategories(url){
     return api.get(url).then(res => res.data.data)
 }
 
+export function getData(url){
+    return api.get(url).then(res => res.data.data)
+}
