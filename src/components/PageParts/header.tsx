@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useSWR from 'swr';
-import { getCategories } from '../../services/api';
+import { getData} from '../../services/api';
 
 export default function Header() {
-  const { data: categoriesData, error } = useSWR('/categories', getCategories);
+  const { data: categoriesData, error } = useSWR('/categories', getData);
 
   const categoryNames = categoriesData?.map(
     (categoryData) => categoryData.attributes.name

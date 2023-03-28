@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import { getCategories } from '../../services/api';
-import NavList from './NavList';
+import { getData } from '../../services/api';
 
 const MENU_LIST = [
   { text: 'Home', href: '/' },
@@ -11,7 +10,7 @@ const MENU_LIST = [
 export default function Navbar() {
   const { data: categoriesData, error } = useSWR(
     '/categories?populate=*',
-    getCategories
+    getData
   );
 
   return (

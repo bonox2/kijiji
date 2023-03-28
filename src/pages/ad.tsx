@@ -1,13 +1,21 @@
 import Image from "next/image";
-import Header from "../components/PageParts/Header";
+import useSWR from "swr";
+import { getAdInfo } from "../services/api";
+// /api/ads/4?populate=*
 
 export default function Product() {
+  // temporary variable
+  const id =2;
+  const { data: adData, error } = useSWR(`/api/ads/${id}?populate=*`, getAdInfo);
+
+  
+
   return (
       <main className="container mx-auto py-[20px] flex flex-nowrap justify-between ">
         <article className="w-[500px];">
           <section className="flex justify-center items-start flex-col">
             <h1 className="text-[24px] font-bold  text-[#3e4153] my-0;">
-              BRAND NEW IN BOX. HOME GYM SET for $1299. RETAILS $3000
+            {adData?.attributes.title}
             </h1>
             <span className="text-[24px] text-[#37a864] ;">$1,299</span>
           </section>

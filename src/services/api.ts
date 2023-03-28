@@ -7,10 +7,10 @@ const api = axios.create({
 })
 
 
-export function getCategories(url){
+export function getData(url){
     return api.get(url).then(res => res.data.data)
 }
 
-export function getData(url){
+export function getAdInfo(url){
     return api.get(url).then(res => res.data.data)
 }
