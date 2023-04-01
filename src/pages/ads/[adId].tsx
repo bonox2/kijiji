@@ -2,13 +2,24 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { getData } from "../../services/api";
+import { timeAgo } from "../../utils/timeAgo"
 
 export default function Product() {
   const router = useRouter();
   const { adId } = router.query;
 
   const { data: adData, error } = useSWR(`/ads/${adId}?populate=*`, getData);
-  const BASE_URL = 'http://localhost:1337/';
+
+  const BASE_URL = 'http://localhost:1337';
+
+  const adStamp = adData?.attributes.createdAt.slice(0, -1);;
+  const adDateTime = adStamp?.split("T");
+
+  const userStamp = adData?.attributes.seller.data.attributes.createdAt.slice(0, -1);;
+  const userDateTime = userStamp?.split("T");
+
+
+  
   return (
     <main className="container mx-auto py-[20px] flex flex-nowrap justify-between ">
       <article className="w-[500px];">
@@ -38,18 +49,20 @@ export default function Product() {
         </section>
       </article>
       <aside className="w-[100%] flex ml-8 flex-col justify-start items-start">
-        <span>Posted over a month ago</span>
-        <span>Location: 1234 Main St, New York, NY 10001</span>
+        <span>{timeAgo(new Date(`${adDateTime?.[0]} ${adDateTime?.[1]}`))}
+          </span>
+        <span>Location: {adData?.attributes.address.data.attributes.addressLine1}</span>
         <div className=" flex flex-col justify-center items-center rounded bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)] mb-5 px-5 py-[25px]">
           <h3 className="box-border text-[18px] text-indigo-900 text-base relative text-center font-medium px-[20px]  mb-5 ;">
-            Contact <span>name</span>
+            Contact {adData?.attributes.seller.data.attributes.firstName}
           </h3>
           <form action="submit" name="contactTo">
             <textarea
+            placeholder="Hi, I am interested! Please contact me if this is still available."
               name="message"
               className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"
             >
-              Hi, I am interested! Please contact me if this is still available.
+              
             </textarea>
             <button
               type="submit"
@@ -60,12 +73,9 @@ export default function Product() {
           </form>
         </div>
         <div>
-          <span>Name</span>
-          <span>View 7 listig</span>
+          <span>{adData?.attributes.seller.data.attributes.firstName}</span>
           <div>
-            <div>avg reply</div>
-            <div>reply rate</div>
-            <div>on Kijiji</div>
+            <div>{timeAgo(new Date(`${userDateTime?.[0]} ${userDateTime?.[1]}`))}</div>
           </div>
         </div>
       </aside>
