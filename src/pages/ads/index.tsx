@@ -21,7 +21,7 @@ export default function NavList() {
 
   return (
     <div className=" py-6 font-medium text-[#373373]  ">
-      <h1>Subcategory</h1>
+      <h1>{subcategory ? subcategory : category ? category : null}</h1>
       {ads?.length > 0 && (
         <div className="flex flex-col items-center justify-start">
           {ads?.map((ad) => {

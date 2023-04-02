@@ -61,7 +61,7 @@ export default function Product() {
         <section>
           <Image
             src={BASE_BE_URL + adCoverImg}
-            alt="Picture of the author"
+            alt="Picture of the product"
             width={700}
             height={445}
           />
