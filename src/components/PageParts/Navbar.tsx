@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import { getData } from '../../services/api';
+import Link from 'next/link';
+
 
 const MENU_LIST = [
   { text: 'Home', href: '/' },
@@ -27,7 +29,7 @@ export default function Navbar() {
            hover:cursor-pointer hover:border-b-4 hover:border-[#37a864] 
            box-border relative group"
               key={categoryId}>
-              {categoryName}
+              <Link href={`/ads?category=${categoryName}`}>{categoryName.replace('and', '&')}</Link>
               {subcategories.length > 0 && (
                 <ul className="absolute top-full left-0 border invisible group-hover:visible">
                   {subcategories.map((subcategory) => {
@@ -39,7 +41,7 @@ export default function Navbar() {
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
             box-border whitespace-nowrap"
                         key={subcategoryId}>
-                        {subcategoryName}
+                        <Link href={`/ads?subcategory=${subcategoryName}`}>{subcategoryName}</Link>
                       </li>
                     );
                   })}
