@@ -28,19 +28,15 @@ export default function Product() {
   const adPrice = adData.attributes.price;
   const adDescription = adData.attributes.description;
   const adViews = adData.attributes.views;
+  
 
   const adCoverImg = adData.attributes.coverImg.data.attributes.url;
+  const adCreatedAtAgo = timeAgo(new Date(`${adDateTime[0]} ${adDateTime[1]}`));
 
-  const adCreatedAt = adDateTime[0];
-  const adCreatedAtTime = adDateTime[1];
-  const adCreatedAtAgo = timeAgo(adStamp);
-
-  const adSellerName = adData.attributes.seller.data.attributes.name;
+  const adSellerName = adData.attributes.seller.data.attributes.firstName;
   const adSellerEmail = adData.attributes.seller.data.attributes.email;
   const adSellerPhone = adData.attributes.seller.data.attributes.phone;
-  const adSellerCreatedAt = userDateTime[0];
-  const adSellerCreatedAtTime = userDateTime[1];
-  const adSellerCreatedAtAgo = timeAgo(userStamp);
+  const adSellerCreatedAtAgo = timeAgo(new Date(`${userDateTime?.[0]} ${userDateTime?.[1]}`));
 
   const adAddress = adData.attributes.address.data.attributes.addressLine1;
   const adAddressCity = adData.attributes.address.data.attributes.city;
@@ -48,6 +44,7 @@ export default function Product() {
   const adAddressZip = adData.attributes.address.data.attributes.zip;
   const adAddressCountry = adData.attributes.address.data.attributes.country;
 
+  const imgLink = BASE_BE_URL + adCoverImg;
   return (
     <main className="container mx-auto py-5 flex flex-nowrap justify-between ">
       <article className="w-[500px];">
@@ -60,7 +57,7 @@ export default function Product() {
         </section>
         <section>
           <Image
-            src={BASE_BE_URL + adCoverImg}
+            src={imgLink}
             alt="Picture of the product"
             width={700}
             height={445}
@@ -73,18 +70,19 @@ export default function Product() {
 
           <p className="w-[100%]">{adDescription}</p>
 
-          <span>{adData.attributes.views}</span>
+          <span>{adViews}</span>
         </section>
       </article>
       <aside className="w-[100%] flex ml-8 flex-col justify-start items-start">
-        <span>{timeAgo(new Date(`${adDateTime[0]} ${adDateTime[1]}`))}</span>
+        <span>{adCreatedAtAgo}</span>
+
         <span>
-          Location: {adData?.attributes.address.data.attributes.addressLine1}
+          Location: {adAddress}
         </span>
 
         <div className="flex flex-col justify-center items-center rounded bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)] mb-5 px-5 py-[25px]">
           <h3 className="box-border text-[18px] text-indigo-900 text-base relative text-center font-medium px-[20px]  mb-5 ;">
-            Contact {adData?.attributes.seller.data.attributes.firstName}
+            Contact {adSellerName}
           </h3>
 
           <form action="submit" name="contactTo">
@@ -100,11 +98,11 @@ export default function Product() {
           </form>
         </div>
         <div>
-          <span>{adData?.attributes.seller.data.attributes.firstName}</span>
+          <span>{adSellerName}</span>
 
           <div>
             <div>
-              {timeAgo(new Date(`${userDateTime?.[0]} ${userDateTime?.[1]}`))}
+              {adSellerCreatedAtAgo}
             </div>
           </div>
         </div>
