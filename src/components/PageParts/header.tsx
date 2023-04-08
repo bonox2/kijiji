@@ -3,26 +3,42 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 import { getData } from "../../services/api";
+import { useRouter } from "next/router";
+import Loader from "../../components/PageParts/Loader";
 
 export default function Header() {
+  const router = useRouter();
   const { data: categoriesData, error } = useSWR("/categories", getData);
+  if (!categoriesData) return <Loader />;
+  if (error) return <div>Something went wrong.</div>;
 
   const categoryNames = categoriesData?.map(
     (categoryData) => categoryData.attributes.name
   );
+  
+  
+  const filterSearch = ({
+    category
+  }) => {
+    const { query } = router;
+    if (category) query.category = category;
+
+    router.push({
+      pathname: router.pathname,
+      query: query,
+    });
+  };
+  const categoryHandler = (e) => {
+    filterSearch({ category: e.target.value });
+  };
 
   return (
     <>
-      <header className="bg-white" >
+      <header className="bg-white">
         <div className="container mx-auto py-5 flex justify-between items-center flex-row">
           <Link href="/">
             <div className="hover:cursor-pointer flex justify-center items-center">
-              <Image
-                src="/logo.png"
-                alt="Company logo"
-                width={65}
-                height={0}
-              />
+              <Image src="/logo.png" alt="Company logo" width={65} height={0} />
             </div>
           </Link>
           <div className="text-sm  ">
@@ -33,10 +49,23 @@ export default function Header() {
                   placeholder="What are you looking for?"
                   className="flex text-center  pr-3"
                 />
-                <select defaultValue="All categories">
+                {/* <select defaultValue="All categories">
+                <option key="All categories">All categories</option>
                   {categoryNames?.map((categoryName) => (
                     <option key={categoryName}>{categoryName}</option>
                   ))}
+                </select> */}
+                <select
+                  value="category"
+                  onChange={categoryHandler}
+                >
+                  <option value="all">All</option>
+                  {
+                    categoryNames.map((categoryName) => (
+                      <option key={categoryName} value={categoryName}>
+                        {categoryName}
+                      </option>
+                    ))}
                 </select>
               </div>
               <button
@@ -47,7 +76,7 @@ export default function Header() {
               </button>
             </form>
           </div>
-          <div className="headerButtons">
+          <div>
             <Link
               href="/"
               className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]"
