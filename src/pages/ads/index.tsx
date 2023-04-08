@@ -3,13 +3,13 @@ import useSWR from "swr";
 import { getData } from "../../services/api";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import Loader from "../../components/PageParts/Loader";
 
 export default function NavList() {
   const router = useRouter();
   const { subcategory, category } = router.query;
 
-  console.log(subcategory, category);
+  
 
   const filterField = subcategory ? "subcategory" : category ? "category" : null;
   const filterValue = subcategory || category;  
@@ -17,8 +17,9 @@ export default function NavList() {
   const adsUrl = filterField ? `/ads?filters[${filterField}][name][$eq]=${filterValue}` : "/ads";
   
 
-  const { data: ads } = useSWR(adsUrl, getData);
-
+  const { data: ads,error } = useSWR(adsUrl, getData);
+  if (!ads) return <Loader />;
+  if (error) return <div>Something went wrong.</div>;
   return (
     <div className=" py-6 font-medium text-[#373373]  ">
       <h1>{subcategory ? subcategory : category ? category : null}</h1>

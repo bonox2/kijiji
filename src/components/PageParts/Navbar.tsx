@@ -16,8 +16,9 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="container mx-auto relative">
-      <ul className="flex justify-start">
+    <section className='bg-white drop-shadow-sm'>
+      <nav className="container mx-auto relative  ">
+      <ul className=" flex justify-start gap-6">
         {categoriesData?.map((categoryData) => {
           const categoryName = categoryData.attributes.name;
           const categoryId = categoryData.id;
@@ -25,7 +26,7 @@ export default function Navbar() {
 
           return (
             <li
-              className="mr-12 py-6 font-medium text-[#373373] border-b-transparent border-b-4
+              className="text-center w-32 py-4 font-medium text-[#373373] border-b-transparent border-b-4
            hover:cursor-pointer hover:border-b-4 hover:border-[#37a864] 
            box-border relative group"
               key={categoryId}>
@@ -37,7 +38,7 @@ export default function Navbar() {
                     const subcategoryId = subcategory.id;
                     return (
                       <li
-                        className="mr-12 py-6 font-medium text-[#373373] border-b-transparent border-b-4
+                        className=" w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
             box-border whitespace-nowrap"
                         key={subcategoryId}>
@@ -52,5 +53,6 @@ export default function Navbar() {
         })}
       </ul>
     </nav>
+    </section>
   );
 }

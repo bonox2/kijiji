@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-white drop-shadow-md  ">
+      <header className="bg-white" >
         <div className="container mx-auto py-5 flex justify-between items-center flex-row">
           <Link href="/">
             <div className="hover:cursor-pointer flex justify-center items-center">

@@ -1,9 +1,11 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import { getData } from '../../services/api';
-import { timeAgo } from '../../utils/timeAgo';
-import { BASE_BE_URL } from '../../../constants';
+import Image from "next/image";
+import { useRouter } from "next/router";
+import useSWR from "swr";
+import { getData } from "../../services/api";
+import { timeAgo } from "../../utils/timeAgo";
+import { BASE_BE_URL } from "../../../constants";
+import Loader from "../../components/PageParts/Loader";
+
 
 export default function Product() {
   const router = useRouter();
@@ -11,24 +13,19 @@ export default function Product() {
 
   const { data: adData, error } = useSWR(`/ads/${adId}?populate=*`, getData);
 
-  if (!adData) return <div>Loading...</div>;
-
+  if (!adData) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
 
   const adStamp = adData.attributes.createdAt.slice(0, -1);
-  const adDateTime = adStamp?.split('T');
+  const adDateTime = adStamp?.split("T");
 
-  const userStamp = adData.attributes.seller.data.attributes.createdAt.slice(
-    0,
-    -1
-  );
-  const userDateTime = userStamp?.split('T');
+  const userStamp = adData.attributes.seller.data.attributes.createdAt.slice(0,-1);
+  const userDateTime = userStamp?.split("T");
 
   const adTitle = adData.attributes.title;
   const adPrice = adData.attributes.price;
   const adDescription = adData.attributes.description;
   const adViews = adData.attributes.views;
-  
 
   const adCoverImg = adData.attributes.coverImg.data.attributes.url;
   const adCreatedAtAgo = timeAgo(new Date(`${adDateTime[0]} ${adDateTime[1]}`));
@@ -36,7 +33,9 @@ export default function Product() {
   const adSellerName = adData.attributes.seller.data.attributes.firstName;
   const adSellerEmail = adData.attributes.seller.data.attributes.email;
   const adSellerPhone = adData.attributes.seller.data.attributes.phone;
-  const adSellerCreatedAtAgo = timeAgo(new Date(`${userDateTime?.[0]} ${userDateTime?.[1]}`));
+  const adSellerCreatedAtAgo = timeAgo(
+    new Date(`${userDateTime?.[0]} ${userDateTime?.[1]}`)
+  );
 
   const adAddress = adData.attributes.address.data.attributes.addressLine1;
   const adAddressCity = adData.attributes.address.data.attributes.city;
@@ -76,9 +75,7 @@ export default function Product() {
       <aside className="w-[100%] flex ml-8 flex-col justify-start items-start">
         <span>{adCreatedAtAgo}</span>
 
-        <span>
-          Location: {adAddress}
-        </span>
+        <span>Location: {adAddress}</span>
 
         <div className="flex flex-col justify-center items-center rounded bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)] mb-5 px-5 py-[25px]">
           <h3 className="box-border text-[18px] text-indigo-900 text-base relative text-center font-medium px-[20px]  mb-5 ;">
@@ -89,21 +86,20 @@ export default function Product() {
             <textarea
               placeholder="Hi, I am interested! Please contact me if this is still available."
               name="message"
-              className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"></textarea>
+              className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"
+            ></textarea>
             <button
               type="submit"
-              className="text-white py-2 w-[100%] bg-[#3e4153] rounded">
+              className="text-white py-2 w-[100%] bg-[#3e4153] rounded"
+            >
               Send message
             </button>
           </form>
         </div>
         <div>
           <span>{adSellerName}</span>
-
           <div>
-            <div>
-              {adSellerCreatedAtAgo}
-            </div>
+            <div>{adSellerCreatedAtAgo}</div>
           </div>
         </div>
       </aside>
