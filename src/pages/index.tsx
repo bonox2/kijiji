@@ -9,8 +9,11 @@ import Loader from "../components/PageParts/Loader";
 
 export default function Home() {
   const { data: adData, error } = useSWR(`/ads/?populate=*`, getData);
+
   if (!adData) return <Loader />;
+
   if (error) return <div>Something went wrong.</div>;
+
   return (
     <>
       <Head>
@@ -19,7 +22,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Navbar />
+
       <section className="flex justify-center items-center gap-6 my-8 mb-52">
       {adData?.map((ad) => {
         const adName = ad.attributes.title;
@@ -27,7 +32,10 @@ export default function Home() {
         const price = ad.attributes.price;
         const adCoverImg = ad.attributes.coverImg.data.attributes.url;
         const imgLink = BASE_BE_URL + adCoverImg;
+        console.log(imgLink);
+        
         const adLink = "/ads/" + adId;
+
         return (
           <AdCard
             adLink={adLink}

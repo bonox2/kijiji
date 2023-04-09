@@ -1,11 +1,10 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-import useSWR from "swr";
-import { getData } from "../../services/api";
-import { timeAgo } from "../../utils/timeAgo";
-import { BASE_BE_URL } from "../../../constants";
-import Loader from "../../components/PageParts/Loader";
-
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
+import { getData } from '../../services/api';
+import { timeAgo } from '../../utils/timeAgo';
+import { BASE_BE_URL } from '../../../constants';
+import Loader from '../../components/PageParts/Loader';
 
 export default function Product() {
   const router = useRouter();
@@ -17,10 +16,13 @@ export default function Product() {
   if (error) return <div>Something went wrong.</div>;
 
   const adStamp = adData.attributes.createdAt.slice(0, -1);
-  const adDateTime = adStamp?.split("T");
+  const adDateTime = adStamp?.split('T');
 
-  const userStamp = adData.attributes.seller.data.attributes.createdAt.slice(0,-1);
-  const userDateTime = userStamp?.split("T");
+  const userStamp = adData.attributes.seller.data.attributes.createdAt.slice(
+    0,
+    -1
+  );
+  const userDateTime = userStamp?.split('T');
 
   const adTitle = adData.attributes.title;
   const adPrice = adData.attributes.price;
@@ -44,6 +46,7 @@ export default function Product() {
   const adAddressCountry = adData.attributes.address.data.attributes.country;
 
   const imgLink = BASE_BE_URL + adCoverImg;
+
   return (
     <main className="container mx-auto py-5 flex flex-nowrap justify-between ">
       <article className="w-[500px];">
@@ -86,12 +89,10 @@ export default function Product() {
             <textarea
               placeholder="Hi, I am interested! Please contact me if this is still available."
               name="message"
-              className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"
-            ></textarea>
+              className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"></textarea>
             <button
               type="submit"
-              className="text-white py-2 w-[100%] bg-[#3e4153] rounded"
-            >
+              className="text-white py-2 w-[100%] bg-[#3e4153] rounded">
               Send message
             </button>
           </form>

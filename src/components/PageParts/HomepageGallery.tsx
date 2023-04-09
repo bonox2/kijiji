@@ -1,10 +1,3 @@
-
-
-
 export default function HomepageGallery() {
-    return(
-        <div>
-
-        </div>
-    );
+  return <div></div>;
 }

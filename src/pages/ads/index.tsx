@@ -1,25 +1,31 @@
 //Sucategory page with rendered products
-import useSWR from "swr";
-import { getData } from "../../services/api";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Loader from "../../components/PageParts/Loader";
+import useSWR from 'swr';
+import { getData } from '../../services/api';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Loader from '../../components/PageParts/Loader';
 
 export default function NavList() {
   const router = useRouter();
   const { subcategory, category } = router.query;
 
-  
+  const filterField = subcategory
+    ? 'subcategory'
+    : category
+    ? 'category'
+    : null;
+  const filterValue = subcategory || category;
 
-  const filterField = subcategory ? "subcategory" : category ? "category" : null;
-  const filterValue = subcategory || category;  
+  const adsUrl = filterField
+    ? `/ads?filters[${filterField}][name][$eq]=${filterValue}`
+    : '/ads';
 
-  const adsUrl = filterField ? `/ads?filters[${filterField}][name][$eq]=${filterValue}` : "/ads";
-  
+  const { data: ads, error } = useSWR(adsUrl, getData);
 
-  const { data: ads,error } = useSWR(adsUrl, getData);
   if (!ads) return <Loader />;
+  
   if (error) return <div>Something went wrong.</div>;
+
   return (
     <div className=" py-6 font-medium text-[#373373]  ">
       <h1>{subcategory ? subcategory : category ? category : null}</h1>
@@ -29,7 +35,7 @@ export default function NavList() {
             const adName = ad.attributes.title;
             const adId = ad.id;
             return (
-              <Link href={"/ads/" + adId} key={adId}>
+              <Link href={'/ads/' + adId} key={adId}>
                 {adName}
               </Link>
             );
