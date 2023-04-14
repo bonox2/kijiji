@@ -16,9 +16,9 @@ export default function AdCard({ adLink,imgLink,title,price }) {
         <img src={imgLink} alt="Picture of the product" className=" w-52 h-36"/>
         <div className="p-4">
           <h4 className=" line-clamp-2 truncate mb-4">{title}</h4>
+
           <div>
             <span className="text-[#37a864]">${price}</span>
-            {/* icon */}
           </div>
         </div>
       </Link>

@@ -42,6 +42,7 @@ export default function SearchBar() {
             className="flex text-center  pr-3"
             name="q"
           />
+
           <select defaultValue="all" name="category">
             <option value="all">All categories</option>
             {categoryNames.map((categoryName) => (
@@ -50,6 +51,7 @@ export default function SearchBar() {
               </option>
             ))}
           </select>
+          
         </div>
         <button
           type="submit"

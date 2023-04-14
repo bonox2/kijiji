@@ -93,6 +93,7 @@ export default function Product() {
               name="message"
               className=" py-5 px-3 border-[1px] rounded border-solid 
                text-[#8e909b] mb-5  text-base min-w-0 w-full max-h-80"></textarea>
+               
             <button
               type="submit"
               className="text-white py-2 w-[100%] bg-[#3e4153] rounded">
@@ -102,6 +103,7 @@ export default function Product() {
         </div>
         <div>
           <span>{adSellerName}</span>
+
           <div>
             <div>{adSellerCreatedAtAgo}</div>
           </div>

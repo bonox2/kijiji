@@ -25,7 +25,6 @@ export default function NavList() {
   const { data: ads, error } = useSWR(adsUrl, getData);
 
   if (!ads) return <Loader />;
-
   if (error) return <div>Something went wrong.</div>;
 
   return (

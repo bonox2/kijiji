@@ -8,8 +8,6 @@ export default function SearchPage() {
   const {category, q} = router.query;
 
   console.log(category, q);
-
-  //build url string as: filters category(not all) and title containsi q or description containsi q
   
   const Ads = category
     ? `/ads?filters${category}[name][$eq]=${category}&filters[title][$contains]=
@@ -21,9 +19,6 @@ export default function SearchPage() {
   if (!ads) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
 
-  
-
-    
   
   
   return <h1>Search</h1>;
