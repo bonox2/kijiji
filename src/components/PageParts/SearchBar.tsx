@@ -1,6 +1,6 @@
 import useSWR from 'swr';
-import Loader from './PageParts/Loader';
-import { getData } from '../services/api';
+import Loader from './Loader';
+import { getData } from '../../services/api';
 import { useRouter } from 'next/router';
 
 export default function SearchBar() {
@@ -42,14 +42,8 @@ export default function SearchBar() {
             className="flex text-center  pr-3"
             name="q"
           />
-          {/* <select defaultValue="All categories">
-                <option key="All categories">All categories</option>
-                  {categoryNames?.map((categoryName) => (
-                    <option key={categoryName}>{categoryName}</option>
-                  ))}
-                </select> */}
           <select defaultValue="all" name="category">
-            <option value="all">All</option>
+            <option value="all">All categories</option>
             {categoryNames.map((categoryName) => (
               <option key={categoryName} value={categoryName}>
                 {categoryName}

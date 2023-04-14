@@ -5,7 +5,7 @@ import useSWR from 'swr';
 import { getData } from '../../services/api';
 import { useRouter } from 'next/router';
 import Loader from './Loader';
-import SearchBar from '../SearchBar';
+import SearchBar from './SearchBar';
 
 export default function Header() {
 

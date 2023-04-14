@@ -33,7 +33,7 @@ export default function Navbar() {
                   {categoryName.replace('and', '&')}
                 </Link>
                 {subcategories.length > 0 && (
-                  <ul className="absolute top-full left-0 border invisible group-hover:visible">
+                  <ul className="absolute left-0 border invisible group-hover:visible top-[110%]">
                     {subcategories.map((subcategory) => {
                       const subcategoryName = subcategory.attributes.name;
                       const subcategoryId = subcategory.id;
@@ -41,9 +41,9 @@ export default function Navbar() {
                         <li
                           className=" w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
-            box-border whitespace-nowrap"
+            box-border whitespace-nowrap bg-white  border-b-gray-300 "
                           key={subcategoryId}>
-                          <Link href={`/ads?subcategory=${subcategoryName}`}>
+                          <Link href={`/ads?subcategory=${subcategoryName}`} className=''>
                             {subcategoryName}
                           </Link>
                         </li>

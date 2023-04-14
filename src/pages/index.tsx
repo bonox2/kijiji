@@ -32,8 +32,6 @@ export default function Home() {
         const price = ad.attributes.price;
         const adCoverImg = ad.attributes.coverImg.data.attributes.url;
         const imgLink = BASE_BE_URL + adCoverImg;
-        console.log(imgLink);
-        
         const adLink = "/ads/" + adId;
 
         return (

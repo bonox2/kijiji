@@ -51,19 +51,21 @@ export default function Product() {
     <main className="container mx-auto py-5 flex flex-nowrap justify-between ">
       <article className="w-[500px];">
         <section className="flex justify-center items-start flex-col">
-          <h1 className="text-[24px] font-bold  text-[#3e4153] my-0;">
+          <h1 className="text-[24px] font-bold  text-[#3e4153] my-0">
             {adTitle}
           </h1>
 
           <span className="text-[24px] text-[#37a864] ;">$ {adPrice}</span>
         </section>
         <section>
-          <Image
+          {/* <Image
             src={imgLink}
             alt="Picture of the product"
             width={700}
             height={445}
-          />
+          /> */}
+          {/* Temporary suspension of the Image component due to faulty picture display */}
+          <img src={imgLink} alt="Picture of the product" className=' w-[700px] h-[445px]'/>
         </section>
         <section className="w-[700px]">
           <h2 className=" text-xl font-normal leading-[26px] text-[#373373] mt-0 mb-5 mx-0">
@@ -89,7 +91,8 @@ export default function Product() {
             <textarea
               placeholder="Hi, I am interested! Please contact me if this is still available."
               name="message"
-              className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"></textarea>
+              className=" py-5 px-3 border-[1px] rounded border-solid 
+               text-[#8e909b] mb-5  text-base min-w-0 w-full max-h-80"></textarea>
             <button
               type="submit"
               className="text-white py-2 w-[100%] bg-[#3e4153] rounded">
