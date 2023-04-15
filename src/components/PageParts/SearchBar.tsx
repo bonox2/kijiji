@@ -56,7 +56,7 @@ export default function SearchBar() {
         <button
           type="submit"
           className="whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 bg-transparent text-[#373373] hover:bg-[#373373] font-semibold hover:text-white text-inherit py-3 px-8 border hover:border-transparent rounded ">
-          Search1
+          Search
         </button>
       </form>
     </div>

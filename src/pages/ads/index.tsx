@@ -1,4 +1,4 @@
-//Sucategory page with rendered products
+//Subcategory page with rendered products
 import useSWR from "swr";
 import { getData } from "../../services/api";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export default function NavList() {
   const filterValue = subcategory || category;
 
   const adsUrl = filterField
-    ? `/ads?filters[${filterField}][name][$eq]=${filterValue}`
+    ? `/ads?populate=*?filters[${filterField}][name][$eq]=${filterValue}`
     : "/ads?populate=*";
 
   const { data: ads, error } = useSWR(adsUrl, getData);
@@ -37,19 +37,19 @@ export default function NavList() {
               const adName = ad.attributes.title;
               const adId = ad.id;
               const price = ad.attributes.price;
-              // const adCoverImg = ad.attributes.coverImg.data.attributes.url;
-              // const imgLink = BASE_BE_URL + adCoverImg;
+              // .data.attributes.url; Can't get this to work
+              const adCoverImg = ad.attributes.coverImg;
+              // 
+              const imgLink = BASE_BE_URL + adCoverImg;
               const adLink = "/ads/" + adId;
               return (
-                <Link href={"/ads/" + adId} key={adId}>
                   <AdCard
                     adLink={adLink}
                     key={adId}
                     title={adName}
-                    // imgLink={imgLink}
+                    imgLink={imgLink}
                     price={price}
                   />
-                </Link>
               );
             })}
           </div>

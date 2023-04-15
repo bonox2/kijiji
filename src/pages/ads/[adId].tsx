@@ -20,10 +20,7 @@ export default function Product() {
   const adStamp = adData.attributes.createdAt.slice(0, -1);
   const adDateTime = adStamp?.split("T");
 
-  const userStamp = adData.attributes.seller.data.attributes.createdAt.slice(
-    0,
-    -1
-  );
+  const userStamp = adData.attributes.seller.data.attributes.createdAt.slice(0,-1);
   const userDateTime = userStamp?.split("T");
 
   const adTitle = adData.attributes.title;
@@ -136,30 +133,30 @@ export default function Product() {
           <span>{adSellerPhone}</span>
 
           <div className="flex justify-between items-center w-full">
-            <div className="flex flex-col justify-center items-center  px-4">
+            <div className="flex flex-col justify-center items-center  px-6">
               <span className="text-base font-normal leading-6 text-center whitespace-nowrap">
                 {" "}
                 1 day
               </span>
-              <span className="text-xs font-normal leading-4 text-gray-600 text-center">
+              <span className="text-xs font-normal leading-4 text-gray-600 text-center whitespace-nowrap">
                 avg reply
               </span>
             </div>
 
-            <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 px-4">
+            <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 px-6">
               <span className="text-base font-normal leading-6 text-center whitespace-nowrap">
                 77%
               </span>
-              <span className="text-xs font-normal leading-4 text-gray-600 text-center">
+              <span className="text-xs font-normal leading-4 text-gray-600 text-center whitespace-nowrap">
                 reply rate
               </span>
             </div>
 
-            <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 px-4">
+            <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 px-6">
               <span className="text-base font-normal leading-6 text-center whitespace-nowrap">
                 {adSellerCreatedAtAgo}
               </span>
-              <span className="text-xs font-normal leading-4 text-gray-600 text-center">
+              <span className="text-xs font-normal leading-4 text-gray-600 text-center whitespace-nowrap">
                 on Kijiji
               </span>
             </div>
