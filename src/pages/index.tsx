@@ -1,18 +1,12 @@
 import Head from "next/head";
 import Navbar from "../components/PageParts/Navbar";
-import useSWR from "swr";
-import { getData } from "../services/api";
 import AdCard from "../components/PageParts/AdCard";
 import Link from "next/link";
 import { BASE_BE_URL } from "../../constants";
 import Loader from "../components/PageParts/Loader";
 
 export default function Home() {
-  const { data: adData, error } = useSWR(`/ads/?populate=*`, getData);
-
-  if (!adData) return <Loader />;
-
-  if (error) return <div>Something went wrong.</div>;
+  console.log('Home');
 
   return (
     <>
@@ -26,12 +20,14 @@ export default function Home() {
       <Navbar />
 
       <section className="flex justify-center items-center gap-6 my-8 mb-52">
-      {adData?.map((ad) => {
+      {/* {adData?.map((ad) => {
         const adName = ad.attributes.title;
         const adId = ad.id;
         const price = ad.attributes.price;
         const adCoverImg = ad.attributes.coverImg.data.attributes.url;
         const imgLink = BASE_BE_URL + adCoverImg;
+        console.log(imgLink);
+        
         const adLink = "/ads/" + adId;
 
         return (
@@ -43,7 +39,7 @@ export default function Home() {
             price={price}
           />
         );
-      })}
+      })} */}
       </section>
     </>
   );

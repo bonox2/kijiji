@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import SearchBar from './SearchBar';
+import useSWR from 'swr';
+import { getData } from '../../services/api';
+import { useRouter } from 'next/router';
+import Loader from './Loader';
+import SearchBar from '../SearchBar';
 
 export default function Header() {
 
@@ -15,18 +20,14 @@ export default function Header() {
               <Image src="/logo.png" alt="Company logo" width={65} height={0} />
             </div>
           </Link>
-
           <SearchBar/>
-
           <div>
             <Link
               href="/"
               className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]">
               Sign in
             </Link>
-
             <span className="mx-2"> or </span>
-
             <Link
               href="/"
               className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]">

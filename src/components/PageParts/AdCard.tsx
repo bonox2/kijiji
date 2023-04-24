@@ -1,24 +1,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function AdCard({ adLink,imgLink,title,price }) {
+export default function AdCard(props) {
   return (
     <article className=" bg-white hover:drop-shadow w-52 rounded-md">
-      <Link href={adLink}>
-        {/* <Image
-          src={imgLink}
+      <Link href={props.adLink}>
+        <Image
+          src={props.imgLink}
           alt="Picture of the product"
           width={205}
           height={150}
-        /> */}
-        {/* Temporary suspension of the Image component due to faulty picture display */}
-
-        <img src={imgLink} alt="Picture of the product" className=" w-52 h-36"/>
+        />
         <div className="p-4">
-          <h4 className=" line-clamp-2 truncate mb-4">{title}</h4>
-
+          <h4 className=" line-clamp-2 truncate mb-4">{props.title}</h4>
           <div>
-            <span className="text-[#37a864]">${price}</span>
+            <span className="text-[#37a864]">${props.price}</span>
+            {/* icon */}
           </div>
         </div>
       </Link>
