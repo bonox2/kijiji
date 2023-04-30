@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useSWR from 'swr';
-import { getData } from '../../services/api';
 import { useRouter } from 'next/router';
 import Loader from './Loader';
-import SearchBar from '../SearchBar';
+import { useQuery } from '@apollo/client';
+import SearchBar from './SearchBar';
 
 export default function Header() {
 

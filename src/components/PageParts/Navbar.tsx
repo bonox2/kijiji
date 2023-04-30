@@ -3,11 +3,7 @@ import Link from 'next/link';
 import { useQuery } from '@apollo/client';
 import { CATEGORIES_Q } from '../../graphql/queries/CATEGORIES_Q';
 
-const MENU_LIST = [
-  { text: 'Home', href: '/' },
-  { text: 'About Us', href: '/about' },
-  { text: 'Contact', href: '/contact' }
-];
+
 
 export default function Navbar() {
   console.log('Navbar');

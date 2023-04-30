@@ -1,6 +1,4 @@
 //Sucategory page with rendered products
-import useSWR from 'swr';
-import { getData } from '../../services/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Loader from '../../components/PageParts/Loader';

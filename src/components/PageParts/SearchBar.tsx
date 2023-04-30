@@ -1,20 +1,20 @@
-import useSWR from 'swr';
+
 import Loader from './Loader';
 import { getData } from '../../services/api';
 import { useRouter } from 'next/router';
+import { useQuery } from '@apollo/client';
+import { CATEGORIES_Q } from '../../graphql/queries/CATEGORIES_Q';
 
 export default function SearchBar() {
   const router = useRouter();
   const { query } = router;
 
-  const { data: categoriesData, error } = useSWR('/categories', getData);
+  const { data, error,loading } = useQuery(CATEGORIES_Q);
 
-  if (!categoriesData) return <Loader />;
+  if (loading) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
 
-  const categoryNames = categoriesData?.map(
-    (categoryData) => categoryData.attributes.name
-  );
+  const categoryNames = data.categories || [];
 
   const filterSearch = (e) => {
     e.preventDefault();
@@ -45,11 +45,14 @@ export default function SearchBar() {
 
           <select defaultValue="all" name="category">
             <option value="all">All categories</option>
-            {categoryNames.map((categoryName) => (
-              <option key={categoryName} value={categoryName}>
-                {categoryName}
+            {categoryNames.map((categoryName) => {
+              const { name } = categoryName;
+              return(
+                <option key={name} value={name}>
+                {name}
               </option>
-            ))}
+              )
+            })}
           </select>
           
         </div>

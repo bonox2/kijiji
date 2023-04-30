@@ -7,7 +7,7 @@ export default function AdCard({
   title,
   price,
   description,
-  timeAgo,
+  // timeAgo,
   city
 }) {
   
@@ -17,7 +17,7 @@ export default function AdCard({
     <article className=" bg-white hover:drop-shadow w-[950px] rounded-md">
       <Link href={adLink}>
         <div className="flex flex-nowrap justify-center items-center">
-          <img
+          <Image
             src={imgLink}
             alt="Picture of the product"
             className=" w-52 h-36"
@@ -31,7 +31,7 @@ export default function AdCard({
 
             <div className="text-gray-600 text-sm flex flex-nowrap justify-center items-center gap-3">
               <span className="text-inherit">${city}</span>
-              <span className="text-inherit ">${timeAgo}</span>
+              {/* <span className="text-inherit ">${timeAgo}</span> */}
             </div>
 
             <div>
