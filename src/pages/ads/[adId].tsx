@@ -29,10 +29,12 @@ export default function Product() {
   // const adDateTime = adStamp.split('T');
   // const adCreatedAtAgo = timeAgo(new Date(`${adDateTime[0]} ${adDateTime[1]}`));
 
-  const userStamp = adData.ad.seller.user.createdAt.slice(0, -1);
-  const userDateTime = userStamp.split("T");
+  console.log({ adData });
+  
+
+  const userStamp = adData.ad.seller.user.createdAt
   const adSellerCreatedAtAgo = timeAgo(
-    new Date(`${userDateTime?.[0]} ${userDateTime?.[1]}`)
+    new Date(userStamp)
   );
 
   return (

@@ -1,10 +1,15 @@
 import { gql } from '@apollo/client';
 
 export const SEARCH_ADS_Q = gql`
-  query SearchAds($categoryName: String!) {
+  query SearchAds($categoryName: String, $query: String) {
     ads(
-      where: 
-            { category: { name: { equals: $categoryName } } }
+      where: {
+        category: { name: { equals: $categoryName } }
+        OR: [
+          { title: { contains: $query } }
+          { description: { contains: $query } }
+        ]
+      }
     ) {
       id
       title

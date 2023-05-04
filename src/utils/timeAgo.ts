@@ -1,4 +1,5 @@
 export const timeAgo = (date) => {
+  //@ts-ignore
   const seconds = Math.floor((new Date() - date) / 1000);
 
   let interval = Math.floor(seconds / 31536000);
