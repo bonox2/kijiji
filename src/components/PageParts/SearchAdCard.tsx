@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function AdCard({
+export default function SearchAdCard({
   adLink,
   imgLink,
   title,

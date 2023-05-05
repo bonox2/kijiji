@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router';
-import Loader from '../../components/PageParts/Loader';
-import SearchAdCard from '../../components/PageParts/SearchAdCard';
-import { timeAgo } from '../../utils/timeAgo';
+import Loader from '../components/PageParts/Loader';
+// import { timeAgo } from '../../utils/timeAgo';
 import { useQuery } from '@apollo/client';
-import { SEARCH_ADS_Q } from '../../graphql/queries/SEARCH_ADS_Q';
+import { SEARCH_ADS_Q } from '../graphql/queries/SEARCH_ADS_Q';
+import SearchAdCard from '../components/PageParts/SearchAdCard';
+import Navbar from "../components/PageParts/Navbar";
+
 
 export default function SearchPage() {
   const router = useRouter();
@@ -26,6 +28,7 @@ export default function SearchPage() {
 
   return (
     <>
+        <Navbar />
       <h1 className=" mb-10 text-[24px] font-bold  text-[#3e4153];">
         {category}
       </h1>
