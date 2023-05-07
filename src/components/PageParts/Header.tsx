@@ -22,13 +22,13 @@ export default function Header() {
           <SearchBar/>
           <div>
             <Link
-              href="/"
+              href="/login"
               className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]">
               Sign in
             </Link>
             <span className="mx-2"> or </span>
             <Link
-              href="/"
+              href="/reg"
               className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]">
               Register
             </Link>

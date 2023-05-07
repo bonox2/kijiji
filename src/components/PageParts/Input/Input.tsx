@@ -1,4 +1,4 @@
-import "./Input.css"
+
 
 export default function Input({labelText,placeHolderText,...props}){
     return(

@@ -5,12 +5,11 @@ import Input from '../../components/PageParts/Input/Input';
 export default function Registration() {
   return (
     <>
-      <section className="authorization">
+      <section className="authorization w-[550px] mx-auto">
         <div className="container">
           <div className="authorization_main">
             <h2 className="authorization_title">Registration</h2>
             <form className="authorization_form" >
-              <label htmlFor="name">Name</label>    
               <Input
                 required
                 className="input_short input"
@@ -18,7 +17,6 @@ export default function Registration() {
                 name="name"
                 labelText={"Name"}
                 placeHolderText="Enter your name"></Input>
-              <label htmlFor="email">Email</label>
               <Input
                 required
                 className="input_short input"
@@ -26,7 +24,6 @@ export default function Registration() {
                 name="email"
                 labelText={"Email"}
                 placeHolderText="Enter your email"></Input>
-              <label htmlFor="password">Password</label>
               <Input
                 required
                 className="input_short input"
