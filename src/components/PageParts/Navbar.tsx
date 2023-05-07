@@ -37,7 +37,7 @@ export default function Navbar() {
                         <li
                           className=" w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
-            box-border whitespace-nowrap"
+            box-border whitespace-nowrap bg-white"
                           key={id}>
                           <Link href={`/ads?subcategory=${name}`}>{name}</Link>
                         </li>

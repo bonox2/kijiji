@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function AdCard({ adLink,imgLink,title,price }) {
   return (
-    <article className=" bg-white hover:drop-shadow w-52 rounded-md">
+    <article className=" bg-white hover:drop-shadow w-52 rounded-md ">
       <Link href={adLink}>
         <Image
           src={imgLink}

@@ -14,30 +14,29 @@ export default function SearchAdCard({
   
  
   return (
-    <article className=" bg-white hover:drop-shadow w-[950px] rounded-md">
+    <article className=" bg-white hover:drop-shadow w-[950px] rounded-md mb-6">
       <Link href={adLink}>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex py-5 px-6 ">
           <Image
             src={imgLink}
             alt="Picture of the product"
-            className="w-52 h-36"
-            width={52}
-            height={36}
+            width={200}
+            height={160}
           />
 
-          <div className="flex flex-col justify-center items-start">
-             <div className="flex justify-between items-center ">
+          <div className="flex flex-col justify-start items-start w-[670px] ml-6">
+             <div className="flex justify-between items-center  w-full mb-1">
               <h4 className=" line-clamp-2 truncate text-indigo-900 text-base hover:underline cursor-pointer">{title}</h4>
-              <span className="text-[#37a864] text-xl font-bold">{price}</span>
+              <span className="text-[#37a864] text-xl font-bold">${price}</span>
              </div>
 
-            <div className="text-gray-600 text-sm flex justify-center items-center gap-3">
-              <span className="text-inherit">{city}</span>
-              {/* <span className="text-inherit ">${timeAgo}</span> */}
+            <div className="text-gray-600 text-sm flex justify-center items-center mb-1">
+              <span >{city}</span>
+              {/* <span className=" ml-2 pl-2">${timeAgo}</span> */}
             </div>
 
             <div>
-              <span className="">{description}</span>
+              <span className="card_description ">{description}</span>
             </div>
           </div>
         </div>

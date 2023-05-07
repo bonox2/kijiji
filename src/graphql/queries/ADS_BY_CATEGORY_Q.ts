@@ -12,6 +12,14 @@ export const ADS_BY_CATEGORY_Q = gql`
     ) {
       id
       title
+      price
+      description
+      address {
+        locality
+      }
+      coverImg {
+        url
+      }
     }
   }
 `;

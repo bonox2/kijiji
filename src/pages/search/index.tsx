@@ -30,7 +30,7 @@ export default function SearchPage() {
         {category}
       </h1>
       {ads?.length > 0 && (
-        <div className="flex flex-col items-center justify-start gap-8">
+        <div className="flex flex-col items-center justify-start">
           {ads?.map((ad) => {
             const adName = ad.title;
             const adId = ad.id;
