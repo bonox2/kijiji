@@ -39,14 +39,14 @@ export default function Product() {
 
   return (
     <>
-      <main className="container mx-auto py-5 flex flex-nowrap justify-between ">
+      <main className="container w-[1140px] mx-auto py-5 flex flex-nowrap justify-between ">
         <article className="w-[500px];">
           <section className="flex justify-center items-start flex-col">
-            <h1 className="text-[24px] font-bold  text-[#3e4153] my-0;">
+            <h1 className="text-[24px] font-bold  text-[#3e4153] ;">
               {adData.ad.title}
             </h1>
 
-            <span className="text-[24px] text-[#37a864] ;">
+            <span className="text-[24px] text-[#37a864] mb-2">
               $ {adData.ad.price}
             </span>
           </section>
@@ -63,7 +63,7 @@ export default function Product() {
               Description
             </h2>
 
-            <p className="w-[100%]">{adData.ad.description}</p>
+            <p className="w-[100%] card_description">{adData.ad.description}</p>
 
             <span>{adData.ad.views}</span>
           </section>
@@ -88,7 +88,7 @@ export default function Product() {
               <textarea
                 placeholder="Hi, I am interested! Please contact me if this is still available."
                 name="message"
-                className=" py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"
+                className="max-h-80 py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"
               ></textarea>
               <button
                 type="submit"
