@@ -8,15 +8,22 @@ import { useQuery } from "@apollo/client";
 import { AD_Q } from "../../graphql/queries/AD_Q";
 import Link from "next/link";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+
+import 'swiper/css';
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import { FreeMode, Navigation, Thumbs } from "swiper";
 export default function Product() {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const router = useRouter();
   const { adId } = router.query;
 
   const {
-    data: adData,
-    error,
-    loading,
-  } = useQuery(AD_Q, {
+    data: adData, error,loading,} = useQuery(AD_Q, {
     variables: {
       adId: adId,
     },
