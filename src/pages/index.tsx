@@ -26,7 +26,7 @@ export default function SearchPage() {
         <Navbar />
       <section className='container mx-auto'>
       {ads?.length > 0 && (
-        <div className="  flex items-center justify-start gap-8">
+        <div className="  flex items-center justify-start gap-8 mt-7">
           {ads?.map((ad) => {
             const adName = ad.title;
             const adId = ad.id;

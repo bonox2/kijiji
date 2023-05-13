@@ -1,38 +1,39 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { getData } from '../../services/api';
 import { timeAgo } from '../../utils/timeAgo';
-import { BASE_BE_URL } from '../../../constants';
 import Loader from '../../components/PageParts/Loader';
 import { useQuery } from '@apollo/client';
 import { AD_Q } from '../../graphql/queries/AD_Q';
 import Link from 'next/link';
+import { useState } from 'react';
+
 
 export default function Product() {
   const router = useRouter();
   const { adId } = router.query;
 
-  const {
-    data: adData,
-    error,
-    loading
-  } = useQuery(AD_Q, {
+
+  const {data: adData,error,loading } = useQuery(AD_Q, {
     variables: {
       adId: adId
     }
   });
 
+  const [src, setSrc] = useState();
+  const handleSrcClick = e => setSrc(e.target.src);
+
+
   if (loading) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
+  
 
   // const adStamp = adData.attributes.createdAt.slice(0, -1);
   // const adDateTime = adStamp.split('T');
   // const adCreatedAtAgo = timeAgo(new Date(`${adDateTime[0]} ${adDateTime[1]}`));
 
-  console.log({ adData });
-
   const userStamp = adData.ad.seller.user.createdAt;
   const adSellerCreatedAtAgo = timeAgo(new Date(userStamp));
+
 
   return (
     <>
@@ -42,14 +43,13 @@ export default function Product() {
             <h1 className="text-[24px] font-bold  text-[#3e4153] ;">
               {adData.ad.title}
             </h1>
-
             <span className="text-[24px] text-[#37a864] mb-2">
               $ {adData.ad.price}
             </span>
           </section>
           <section>
             <Image
-              src={adData.ad.coverImg.url}
+              src={src}
               alt="Picture of the product"
               width={700}
               height={445}
@@ -60,8 +60,10 @@ export default function Product() {
                 alt="Picture of the product"
                 width={100}
                 height={100}
-                onClick={() => {}}
+                onClick={handleSrcClick}
+                className='cursor-pointer'
               />
+
               {adData.ad.images.map((image) => (
                 <Image
                   key={image.id}
@@ -69,7 +71,8 @@ export default function Product() {
                   alt="Picture of the product"
                   width={100}
                   height={100}
-                  onClick={() => {}}
+                  onClick={handleSrcClick}
+                  className='cursor-pointer'
                 />
               ))}
             </div>

@@ -2,12 +2,11 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Loader from './Loader';
 import { useQuery } from '@apollo/client';
 import SearchBar from './SearchBar';
 
 export default function Header() {
-
+  
   
 
   return (
@@ -20,7 +19,7 @@ export default function Header() {
             </div>
           </Link>
           <SearchBar/>
-          <div>
+          <div className="flex flex-nowrap justify-center items-center ">
             <Link
               href="/login"
               className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]">
@@ -29,14 +28,18 @@ export default function Header() {
             <span className="mx-2"> or </span>
             <Link
               href="/reg"
-              className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]">
+              className="text-[#2681db] font-bold mr-6 transition-colors ease-linear duration-200 underline hover:text-[#373373]">
               Register
+            </Link>
+            <Image src="/" alt='profile picture' width={40} height={40} className='w-10 h-10 rounded-full overflow-hidden mr-6'/>
+            <Link
+              href="/postAd"
+              className="text-white font-bold transition-colors ease-linear duration-200 px-4 py-3 rounded shadow-2xl   bg-[#373373] hover:bg-[#4a4675]">
+              Post ad
             </Link>
           </div>
         </div>
-        <nav>
-          <div className="container"></div>
-        </nav>
+        
       </header>
     </>
   );
