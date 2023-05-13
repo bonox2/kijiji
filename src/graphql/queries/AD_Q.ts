@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const AD_Q = gql`
-    query Ad($adId: ID!) {
+  query Ad($adId: ID!) {
     ad(where: { id: $adId }) {
       id
       title
@@ -9,6 +9,11 @@ export const AD_Q = gql`
       description
       coverImg {
         url
+      }
+      images {
+        file {
+          url
+        }
       }
       views
       address {
@@ -21,7 +26,7 @@ export const AD_Q = gql`
         }
         firstName
         phoneNumber
-        avatar{
+        avatar {
           url
         }
       }

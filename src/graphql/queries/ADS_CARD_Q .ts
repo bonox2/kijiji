@@ -9,6 +9,7 @@ export const ADS_CARD_Q = gql`
       coverImg {
         url
       }
+      
     }
   }
 `;

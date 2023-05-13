@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Button from '../../components/PageParts/Button';
-import Input from '../../components/PageParts/Input';
+import Button from '../../components/PageParts/Button/Button';
+import Input from '../../components/PageParts/Input/Input';
 
 
 export default function Login() {
