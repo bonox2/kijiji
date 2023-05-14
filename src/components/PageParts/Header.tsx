@@ -56,7 +56,8 @@ export default function Header() {
 
             <Link
               href="/postAd"
-              className="text-white font-bold transition-colors ease-linear duration-200 px-4 py-3 rounded shadow-2xl  bg-[#373373] hover:bg-[#4a4675]">
+              className="text-white font-bold transition-colors ease-linear duration-200 px-4 py-3 
+              rounded shadow-lg  bg-[#373373] hover:bg-[#4a4675]">
               Post ad
             </Link>
           </div>
