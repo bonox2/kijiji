@@ -166,3 +166,10 @@
   border: solid 2px orange;
   width: 100%;
 }
+
+
+/* translate */
+.translate-left{
+    left: 50%;
+    transform: translate(-50%, 0);
+}

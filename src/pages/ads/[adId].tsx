@@ -143,8 +143,8 @@ export default function Product() {
             <span>{adData.ad.seller.user.phone}</span>
 
             <div className="flex justify-between items-center w-full">
-              <div className="flex flex-col justify-center items-center  px-6">
-                <span className="text-base font-normal leading-6 text-center whitespace-nowrap">
+              <div className="flex flex-col justify-center items-center  w-full">
+                <span className="text-base font-normal leading-6 text-center whitespace-nowrap ">
                   {' '}
                   1 day
                 </span>
@@ -153,7 +153,7 @@ export default function Product() {
                 </span>
               </div>
 
-              <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 px-6">
+              <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 w-full">
                 <span className="text-base font-normal leading-6 text-center whitespace-nowrap">
                   77%
                 </span>
@@ -162,7 +162,7 @@ export default function Product() {
                 </span>
               </div>
 
-              <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 px-6">
+              <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 w-full">
                 <span className="text-base font-normal leading-6 text-center whitespace-nowrap">
                   {adSellerCreatedAtAgo}
                   {}

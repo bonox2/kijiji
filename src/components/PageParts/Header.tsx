@@ -7,8 +7,6 @@ import SearchBar from './SearchBar';
 
 export default function Header() {
   
-  
-
   return (
     <>
       <header className="bg-white">
@@ -28,13 +26,37 @@ export default function Header() {
             <span className="mx-2"> or </span>
             <Link
               href="/reg"
-              className="text-[#2681db] font-bold mr-6 transition-colors ease-linear duration-200 underline hover:text-[#373373]">
+              className="text-[#2681db] font-bold  transition-colors ease-linear duration-200 underline hover:text-[#373373]">
               Register
             </Link>
-            <Image src="/" alt='profile picture' width={40} height={40} className='w-10 h-10 rounded-full overflow-hidden mr-6'/>
+
+
+            <nav className='text-center w-10  font-medium text-[#373373] border-b-transparent
+             border-b-4 hover:cursor-pointer  relative group z-20 mx-10'>
+              <Image src="/" alt='profile picture' width={40} height={40} className='w-10 h-10 
+              rounded-full overflow-hidden  '></Image>
+              <ul className='absolute top-full translate-left border invisible group-hover:visible
+              flex flex-col'>
+
+                <li className=' w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
+            hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
+            box-border whitespace-nowrap bg-white'>
+                  <Link href="/account/myAds">My Ads</Link>
+                </li>
+
+                <li className=' w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
+            hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
+            box-border whitespace-nowrap bg-white'>
+                  <Link href="/account/myProfile">My Profile</Link>
+                </li>
+
+              </ul>
+            </nav>
+            
+
             <Link
               href="/postAd"
-              className="text-white font-bold transition-colors ease-linear duration-200 px-4 py-3 rounded shadow-2xl   bg-[#373373] hover:bg-[#4a4675]">
+              className="text-white font-bold transition-colors ease-linear duration-200 px-4 py-3 rounded shadow-2xl  bg-[#373373] hover:bg-[#4a4675]">
               Post ad
             </Link>
           </div>
