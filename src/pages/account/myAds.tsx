@@ -2,12 +2,18 @@ import { useState } from "react";
 import AccNavbar from "../../components/PageParts/AccNavbar";
 
 export default function MyAds() {
-    const [state, setState] = useState(true);
-    const handleClick = () => {
-        setState(current => !current);
+    const [stateL, setStateL] = useState(true);
+    const handleClickL = () => {
+        setStateL(current => !current);
+    };
+    let activeClassL = stateL ? "btn_active" : "account_btn";
+
+    const [stateR, setStateR] = useState(true);
+    const handleClickR = () => {
+        setStateR(current => !current);
     };
 
-    let activeClass = state ? "btn_active" : "account_btn";
+    let activeClassR = stateR ? "btn_active" : "account_btn";
 
 
   return (
@@ -18,16 +24,16 @@ export default function MyAds() {
         <section className="flex justify-between items-center ">
           <div>
             <button
-              className={`${activeClass}  relative border-[1px] text-base font-medium border-gray-300 duration-300
-              px-8 py-3 rounded-l bg-white`}  onClick={handleClick}>
+              className={`${activeClassL}  relative border-[1px] text-base font-medium border-gray-300 duration-300
+              px-8 py-3 rounded-l bg-white`}  onClick={handleClickL}>
               <div>
                 Active <span>0</span>
               </div>
             </button>
 
             <button
-              className={`${activeClass}  relative border-[1px] text-base font-medium border-gray-300 border-l-0 duration-300
-                    px-8 py-3 rounded-r bg-white`} onClick={handleClick}>
+              className={`${activeClassR}  relative border-[1px] text-base font-medium border-gray-300 border-l-0 duration-300
+                    px-8 py-3 rounded-r bg-white`} onClick={handleClickR}>
               <div>
                 Inactive <span>0</span>
               </div>
