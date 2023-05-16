@@ -4,13 +4,23 @@ import AccNavbar from "../../components/PageParts/AccNavbar";
 export default function MyAds() {
     const [stateL, setStateL] = useState(true);
     const handleClickL = () => {
+      if(stateL == true){
+
+      } else{
+        setStateR(current => !current);
         setStateL(current => !current);
+      }
+        
     };
     let activeClassL = stateL ? "btn_active" : "account_btn";
 
-    const [stateR, setStateR] = useState(true);
+    const [stateR, setStateR] = useState(false);
     const handleClickR = () => {
+      if(stateR == true){
+      } else{
         setStateR(current => !current);
+        setStateL(current => !current);
+      }
     };
 
     let activeClassR = stateR ? "btn_active" : "account_btn";
@@ -33,7 +43,7 @@ export default function MyAds() {
 
             <button
               className={`${activeClassR}  relative border-[1px] text-base font-medium border-gray-300 border-l-0 duration-300
-                    px-8 py-3 rounded-r bg-white`} onClick={handleClickR}>
+                    px-8 py-3 rounded-r bg-white `} onClick={handleClickR}>
               <div>
                 Inactive <span>0</span>
               </div>
