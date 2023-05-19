@@ -41,13 +41,13 @@ export default function Header() {
                 <li className=' w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
             box-border whitespace-nowrap bg-white'>
-                  <Link href="/account/myAds">My Ads</Link>
+                  <Link href="/account/my-ads/active">My Ads</Link>
                 </li>
 
                 <li className=' w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
             box-border whitespace-nowrap bg-white'>
-                  <Link href="/account/myProfile">My Profile</Link>
+                  <Link href="/account/profile/listings">My Profile</Link>
                 </li>
 
               </ul>

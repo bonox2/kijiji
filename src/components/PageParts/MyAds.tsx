@@ -1,5 +1,6 @@
 import { useState } from "react";
-import AccNavbar from "../../components/PageParts/AccNavbar";
+import AccNavbar from "./AccNavbar";
+import Link from "next/link";
 
 export default function MyAds() {
     const [stateL, setStateL] = useState(true);
@@ -18,8 +19,8 @@ export default function MyAds() {
     const handleClickR = () => {
       if(stateR == true){
       } else{
-        setStateR(current => !current);
         setStateL(current => !current);
+        setStateR(current => !current);
       }
     };
 
@@ -33,21 +34,15 @@ export default function MyAds() {
         <h1>My Ads</h1>
         <section className="flex justify-between items-center ">
           <div>
-            <button
-              className={`${activeClassL}  relative border-[1px] text-base font-medium border-gray-300 duration-300
+              <Link href="/account/my-ads/active" className={`${activeClassL}  relative border-[1px] text-base font-medium border-gray-300 duration-300
               px-8 py-3 rounded-l bg-white`}  onClick={handleClickL}>
-              <div>
                 Active <span>0</span>
-              </div>
-            </button>
+              </Link>
 
-            <button
-              className={`${activeClassR}  relative border-[1px] text-base font-medium border-gray-300 border-l-0 duration-300
+              <Link href="/account/my-ads/inactive" className={`${activeClassR}  relative border-[1px] text-base font-medium border-gray-300 border-l-0 duration-300
                     px-8 py-3 rounded-r bg-white `} onClick={handleClickR}>
-              <div>
                 Inactive <span>0</span>
-              </div>
-            </button>
+              </Link>
           </div>
 
           <input type="text" />
