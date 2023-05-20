@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <>
       <header className="bg-white">
-        <div className="container mx-auto py-5 flex justify-between items-center flex-row">
+        <div className="container max-w-[1140px] mx-auto py-5 flex justify-between items-center flex-row">
           <Link href="/">
             <div className="hover:cursor-pointer flex justify-center items-center">
               <Image src="/logo.png" alt="Company logo" width={65} height={0} />

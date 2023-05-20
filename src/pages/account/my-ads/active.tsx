@@ -1,4 +1,5 @@
-import MyAds from "../../../components/PageParts/myAds";
+import MyAds from "../../../components/PageParts/MyAds";
+
 
 
 
