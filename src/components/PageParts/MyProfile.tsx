@@ -80,7 +80,7 @@ export default function MyProfile() {
             <Link
               href="/account/profile/listings"
               className={`${activeClassL}  relative border-[1px] text-base font-medium border-gray-300 duration-300
-              px-8 py-3 rounded-t bg-white overflow-hidden `}
+              px-8 py-3 rounded-t bg-white overflow-hidden  `}
               onClick={handleClickL}
             >
               Listings <span>0</span>

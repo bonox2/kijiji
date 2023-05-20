@@ -48,7 +48,7 @@ export default function MyAds() {
               </Link>
           </div>
 
-          <input type="text" />
+          <input type="text" className=" rounded  px-6 py-3 border-[1px] border-[#d2d3d7]" placeholder="Search..."/>
         </section>
       </div>
     </>
