@@ -1,31 +1,31 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { timeAgo } from '../../utils/timeAgo';
-import Loader from '../../components/PageParts/Loader';
-import { useQuery } from '@apollo/client';
-import { AD_Q } from '../../graphql/queries/AD_Q';
-import Link from 'next/link';
-import { useState } from 'react';
-
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { timeAgo } from "../../utils/timeAgo";
+import Loader from "../../components/PageParts/Loader";
+import { useQuery } from "@apollo/client";
+import { AD_Q } from "../../graphql/queries/AD_Q";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Product() {
   const router = useRouter();
   const { adId } = router.query;
 
-
-  const {data: adData,error,loading } = useQuery(AD_Q, {
+  const {
+    data: adData,
+    error,
+    loading,
+  } = useQuery(AD_Q, {
     variables: {
-      adId: adId
-    }
+      adId: adId,
+    },
   });
 
   const [src, setSrc] = useState();
-  const handleSrcClick = e => setSrc(e.target.src);
-
+  const handleSrcClick = (e) => setSrc(e.target.src);
 
   if (loading) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
-  
 
   // const adStamp = adData.attributes.createdAt.slice(0, -1);
   // const adDateTime = adStamp.split('T');
@@ -33,7 +33,6 @@ export default function Product() {
 
   const userStamp = adData.ad.seller.user.createdAt;
   const adSellerCreatedAtAgo = timeAgo(new Date(userStamp));
-
 
   return (
     <>
@@ -61,7 +60,7 @@ export default function Product() {
                 width={100}
                 height={100}
                 onClick={handleSrcClick}
-                className='cursor-pointer'
+                className="cursor-pointer"
               />
 
               {adData.ad.images.map((image) => (
@@ -72,7 +71,7 @@ export default function Product() {
                   width={100}
                   height={100}
                   onClick={handleSrcClick}
-                  className='cursor-pointer'
+                  className="cursor-pointer"
                 />
               ))}
             </div>
@@ -92,7 +91,8 @@ export default function Product() {
             <svg
               className="h-6 w-6 mr-3 text-gray-800"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 384 512">
+              viewBox="0 0 384 512"
+            >
               <path d="M168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2H168.3zM192 256C227.3 256 256 227.3 256 192C256 156.7 227.3 128 192 128C156.7 128 128 156.7 128 192C128 227.3 156.7 256 192 256z" />
             </svg>
 
@@ -116,21 +116,25 @@ export default function Product() {
               <textarea
                 placeholder="Hi, I am interested! Please contact me if this is still available."
                 name="message"
-                className="max-h-80 py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"></textarea>
+                className="max-h-80 py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"
+              ></textarea>
               <button
                 type="submit"
-                className="text-white py-2 w-[100%] bg-[#3e4153] rounded">
+                className="text-white py-2 w-[100%] bg-[#3e4153] rounded"
+              >
                 Send message
               </button>
             </form>
           </div>
           <div
             className="flex flex-col justify-center items-start rounded 
-        bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)]  px-5 py-5 w-full gap-3">
+        bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)]  px-5 py-5 w-full gap-3"
+          >
             <Link
               href="/"
               className="flex justify-center items-center gap-5 text-[#103a56]
-          hover:text-[#155e9b] hover:underline font-semibold	rounded-full overflow-hidden">
+          hover:text-[#155e9b] hover:underline font-semibold	rounded-full overflow-hidden"
+            >
               <Image
                 src={adData.ad.seller.avatar.url}
                 alt="Profile picture"
@@ -145,7 +149,7 @@ export default function Product() {
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col justify-center items-center  w-full">
                 <span className="text-base font-normal leading-6 text-center whitespace-nowrap ">
-                  {' '}
+                  {" "}
                   1 day
                 </span>
                 <span className="text-xs font-normal leading-4 text-gray-600 text-center whitespace-nowrap">

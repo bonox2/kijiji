@@ -5,8 +5,8 @@ import Link from 'next/link';
 export default function AccNavbar() {
 
   return (
-    <section className="bg-white drop-shadow-sm">
-      <nav className="container mx-auto relative  ">
+    <section className="bg-white drop-shadow-sm ">
+      <nav className="container mx-auto relative max-w-[1140px]  ">
         <ul className=" flex justify-start p-4">
 
         <li className=' border-r-[1px] border-gray-200 px-6'>

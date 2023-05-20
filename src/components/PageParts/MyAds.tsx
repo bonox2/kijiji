@@ -39,11 +39,11 @@ export default function MyAds() {
         <section className="flex justify-between items-center ">
           <div>
               <Link href="/account/my-ads/active" className={`${activeClassL}  relative border-[1px] text-base font-medium border-gray-300 duration-300
-              px-8 py-3 rounded-l bg-white`}  onClick={handleClickL}>
+              px-8 py-3 rounded-l bg-white overflow-hidden`}  onClick={handleClickL}>
                 Active <span>0</span>
               </Link>
               <Link href="/account/my-ads/inactive" className={`${activeClassR}  relative border-[1px] text-base font-medium border-gray-300 border-l-0 duration-300
-                    px-8 py-3 rounded-r bg-white `} onClick={handleClickR}>
+                    px-8 py-3 rounded-r bg-white overflow-hidden`} onClick={handleClickR}>
                 Inactive <span>0</span>
               </Link>
           </div>
