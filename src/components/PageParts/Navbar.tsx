@@ -24,7 +24,7 @@ export default function Navbar() {
            hover:cursor-pointer hover:border-b-4 hover:border-[#37a864] 
            box-border relative group"
                 key={id}>
-                <Link href={`/ads?category=${name}`}>
+                <Link href={`/ads?category=${name}`} className='w-full h-full'>
                   {name.replace('and', '&')}
                 </Link>
                 {subcategories.length > 0 && (
@@ -38,7 +38,7 @@ export default function Navbar() {
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
             box-border whitespace-nowrap bg-white"
                           key={id}>
-                          <Link href={`/ads?subcategory=${name}`}>{name}</Link>
+                          <Link href={`/ads?subcategory=${name}`} className='w-full h-full'>{name}</Link>
                         </li>
                       );
                     })}
