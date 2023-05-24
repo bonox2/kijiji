@@ -28,8 +28,8 @@ export default function NavList() {
   const ads = data?.ads || [];
 
   return (
-    <div className=" py-6 font-medium text-[#373373]  ">
-      <h1>{subcategory ? subcategory : category ? category : null}</h1>
+    <section className=" py-6 font-medium text-[#373373] container max-w-[1140px] mx-auto  ">
+      <h1 className='ml-24 my-6 text-2xl'>{subcategory ? subcategory : category ? category : null}</h1>
       {ads.length > 0 && (
         <div className="flex flex-col items-center justify-start">
           {ads?.map((ad) => {
@@ -60,6 +60,6 @@ export default function NavList() {
           })}
         </div>
       )}
-    </div>
+    </section>
   );
 }
