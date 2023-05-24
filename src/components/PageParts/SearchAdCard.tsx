@@ -22,6 +22,7 @@ export default function SearchAdCard({
             alt="Picture of the product"
             width={200}
             height={160}
+            className="w-[200px] h-[160px]"
           />
 
           <div className="flex flex-col justify-start items-start w-[670px] ml-6">

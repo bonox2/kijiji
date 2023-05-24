@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <section className="bg-white drop-shadow-sm">
-      <nav className="container mx-auto relative  ">
+      <nav className="container mx-auto relative max-w-[1140px]  ">
         <ul className=" flex justify-start gap-6">
           {categories.map((category) => {
             const { id, name, subcategories } = category;
