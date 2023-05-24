@@ -5,7 +5,7 @@ import Loader from "../../components/PageParts/Loader";
 import { useQuery } from "@apollo/client";
 import { AD_Q } from "../../graphql/queries/AD_Q";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Product() {
   const router = useRouter();
@@ -21,8 +21,14 @@ export default function Product() {
     },
   });
 
-  const [src, setSrc] = useState();
-  const handleSrcClick = (e) => setSrc(e.target.src);
+  const [src, setSrc] = useState(null);
+
+  useEffect(() => {
+    if (adData) {
+      setSrc(adData.ad.coverImg.url);
+    }
+  }, [adData])
+  
 
   if (loading) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
@@ -47,30 +53,30 @@ export default function Product() {
             </span>
           </section>
           <section>
-            <Image
+            {src && <Image
               src={src}
               alt="Picture of the product"
               width={700}
               height={445}
-            />
+            />}
             <div className="flex gap-1 w-full overflow-x-auto">
               <Image
                 src={adData.ad.coverImg.url}
                 alt="Picture of the product"
                 width={100}
                 height={100}
-                onClick={handleSrcClick}
+                onClick={() => setSrc(adData.ad.coverImg.url)}
                 className="cursor-pointer"
               />
 
               {adData.ad.images.map((image) => (
                 <Image
-                  key={image.id}
+                  key={image.file.id}
                   src={image.file.url}
                   alt="Picture of the product"
                   width={100}
                   height={100}
-                  onClick={handleSrcClick}
+                  onClick={() => setSrc(image.file.url)}
                   className="cursor-pointer"
                 />
               ))}

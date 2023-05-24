@@ -1,8 +1,9 @@
 import { gql } from '@apollo/client';
 
 export const ADS_BY_CATEGORY_Q = gql`
-  query AdsByCategory($categoryName: String!) {
+  query AdsByCategory($categoryName: String!, $orderBy: [AdOrderByInput!]) {
     ads(
+      orderBy: $orderBy
       where: {
         OR: [
           { category: { name: { equals: $categoryName } } }
@@ -15,9 +16,11 @@ export const ADS_BY_CATEGORY_Q = gql`
       price
       description
       address {
+        id
         locality
       }
       coverImg {
+        id
         url
       }
     }

@@ -24,7 +24,7 @@ export default function SearchPage() {
   return (
     <>
         <Navbar />
-      <section className='container max-w-[1140px] mx-auto'>
+      <section className='container mx-auto'>
       {ads?.length > 0 && (
         <div className="  flex items-center justify-start gap-8 mt-7">
           {ads?.map((ad) => {

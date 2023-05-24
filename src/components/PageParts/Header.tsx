@@ -6,7 +6,6 @@ import { useQuery } from '@apollo/client';
 import SearchBar from './SearchBar';
 
 export default function Header() {
-  
   return (
     <>
       <header className="bg-white">
@@ -16,7 +15,7 @@ export default function Header() {
               <Image src="/logo.png" alt="Company logo" width={65} height={0} />
             </div>
           </Link>
-          <SearchBar/>
+          <SearchBar />
           <div className="flex flex-nowrap justify-center items-center ">
             <Link
               href="/login"
@@ -30,29 +29,34 @@ export default function Header() {
               Register
             </Link>
 
-
-            <nav className='text-center w-10  font-medium text-[#373373] border-b-transparent
-             border-b-4 hover:cursor-pointer  relative group z-20 mx-10'>
-              <Image src="/" alt='profile picture' width={40} height={40} className='w-10 h-10 
-              rounded-full overflow-hidden  '></Image>
-              <ul className='absolute top-full translate-left border invisible group-hover:visible
-              flex flex-col'>
-
-                <li className=' w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
+            <nav
+              className="text-center w-10 font-medium text-[#373373] border-b-transparent
+             border-b-4 hover:cursor-pointer  relative group z-20 mx-10">
+              <Image
+                src="/"
+                alt="profile picture"
+                width={40}
+                height={40}
+                className="w-10 h-10 
+              rounded-full overflow-hidden"></Image>
+              <ul
+                className="absolute top-full translate-left border invisible group-hover:visible
+              flex flex-col">
+                <li
+                  className=" w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
-            box-border whitespace-nowrap bg-white'>
+            box-border whitespace-nowrap bg-white">
                   <Link href="/account/my-ads/active">My Ads</Link>
                 </li>
 
-                <li className=' w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
+                <li
+                  className=" w-32 py-2 font-medium text-[#373373] border-b-transparent border-b-4
             hover:cursor-pointer hover:border-b-4 hover:border-[#37a864]
-            box-border whitespace-nowrap bg-white'>
+            box-border whitespace-nowrap bg-white">
                   <Link href="/account/profile/listings">My Profile</Link>
                 </li>
-
               </ul>
             </nav>
-            
 
             <Link
               href="/post-ad"
@@ -62,7 +66,6 @@ export default function Header() {
             </Link>
           </div>
         </div>
-        
       </header>
     </>
   );
