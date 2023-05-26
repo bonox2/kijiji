@@ -1,27 +1,15 @@
-import { useState } from "react";
+
+import { useRouter } from 'next/router';
 import Link from "next/link";
 import Image from "next/image";
 
 export default function MyProfile() {
-  const [stateL, setStateL] = useState(true);
-  const handleClickL = () => {
-    if (stateL == true) {
-    } else {
-      setStateR((current) => !current);
-      setStateL((current) => !current);
-    }
-  };
-  let activeClassL = stateL ? "btn_active_left" : "account_btn_left";
+  const router = useRouter();
+  const { asPath } = router;
+  
+  const activeClassL = asPath.endsWith('/listings') ? 'btn_active_left' : 'account_btn_left';
+  const activeClassR = asPath.endsWith('/reviews') ? 'btn_active_left' : 'account_btn_left';
 
-  const [stateR, setStateR] = useState(false);
-  const handleClickR = () => {
-    if (stateR == true) {
-    } else {
-      setStateR((current) => !current);
-      setStateL((current) => !current);
-    }
-  };
-  let activeClassR = stateR ? "btn_active_left" : "account_btn_left";
 
   return (
     <>
@@ -81,7 +69,6 @@ export default function MyProfile() {
               href="/account/profile/listings"
               className={`${activeClassL}  relative border-[1px] text-base font-medium border-gray-300 duration-300
               px-8 py-3 rounded-t bg-white overflow-hidden  `}
-              onClick={handleClickL}
             >
               Listings <span>0</span>
             </Link>
@@ -89,7 +76,6 @@ export default function MyProfile() {
               href="/account/profile/reviews"
               className={`${activeClassR}  relative border-[1px] text-base font-medium border-gray-300 border-t-0 duration-300
                     px-8 py-3 rounded-b bg-white overflow-hidden `}
-              onClick={handleClickR}
             >
               Reviews <span>0</span>
             </Link>
