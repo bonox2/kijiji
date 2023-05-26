@@ -25,8 +25,8 @@ export default function SearchPage() {
   
 
   return (
-    <>
-      <h1 className=" mb-10 text-[24px] font-bold  text-[#3e4153];">
+    <section className=' container max-w-[1140px] mx-auto'>
+      <h1 className=" my-6 text-4xl font-bold  text-[#42509f]">
         {category}
       </h1>
       {ads?.length > 0 && (
@@ -59,6 +59,6 @@ export default function SearchPage() {
           })}
         </div>
       )}
-    </>
+    </section>
   );
 }
