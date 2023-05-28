@@ -38,9 +38,9 @@ export default function NavList() {
 
   return (
     <section className=" py-6 font-medium text-[#373373] container max-w-[1140px] mx-auto flex justify-between">
-      <div className="w-full">
-        <h2 className="label_header" >Price order</h2>
-        <select name="sort" className=" h-min w-full  p-2 rounded text-[#"  value={byPrice} onChange={e=>setByPrice(e.target.value)} >
+      <div className="w-56">
+        <h2 className="label_header " >Price order</h2>
+        <select name="sort" className=" h-min w-56  p-2 rounded text-[#"  value={byPrice} onChange={e=>setByPrice(e.target.value)} >
           <option value="">Sort by price</option>
           <option value="asc">High to Low</option>
           <option value="desc">Low to High</option>
@@ -52,8 +52,8 @@ export default function NavList() {
         <option value="">Oldest</option>
       </select> */}
 
-      <div className=" ml-10 ">
-        <h1 className=" my-6 text-2xl">
+      <div className=" ml-10 w-full ">
+        <h1 className=" my-6 text-2xl w-full">
           {subcategory ? subcategory : category ? category : null}
         </h1>
 
