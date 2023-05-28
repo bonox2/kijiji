@@ -58,6 +58,7 @@ export default function Product() {
               alt="Picture of the product"
               width={700}
               height={445}
+              className="w-[700px] h-[445px] object-cover"
             />}
             <div className="flex gap-1 w-full overflow-x-auto">
               <Image
