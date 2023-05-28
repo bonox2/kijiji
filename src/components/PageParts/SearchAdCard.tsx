@@ -14,7 +14,7 @@ export default function SearchAdCard({
   
  
   return (
-    <article className=" bg-white hover:drop-shadow w-[950px] rounded-md mb-6">
+    <section className=" bg-white hover:drop-shadow  w-[880px] rounded-md mb-6">
       <Link href={adLink}>
         <div className="flex py-5 px-6 ">
           <Image
@@ -25,9 +25,9 @@ export default function SearchAdCard({
             className="w-[200px] h-[160px]"
           />
 
-          <div className="flex flex-col justify-start items-start w-[670px] ml-6">
+          <div className="flex flex-col justify-start items-start   ml-6">
              <div className="flex justify-between items-center  w-full mb-1">
-              <h4 className=" line-clamp-2 truncate text-indigo-900 text-base hover:underline cursor-pointer">{title}</h4>
+              <h4 className=" line-clamp-2 truncate w-[50ch] text-indigo-900 text-base hover:underline cursor-pointer">{title}</h4>
               <span className="text-[#37a864] text-xl font-bold">${price}</span>
              </div>
 
@@ -42,6 +42,6 @@ export default function SearchAdCard({
           </div>
         </div>
       </Link>
-    </article>
+    </section>
   );
 }
