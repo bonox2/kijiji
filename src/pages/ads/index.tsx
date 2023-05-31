@@ -9,28 +9,37 @@ import { useEffect, useState } from "react";
 export default function NavList() {
   const router = useRouter();
   const { subcategory, category } = router.query;
-
   const filterValue = subcategory || category;
-
-  const [fetchAdsByCategory, { data, loading, error }] =
+ const [fetchAdsByCategory, { data, loading, error }] =
     useLazyQuery(ADS_BY_CATEGORY_Q);
 
-  const [byPrice, setByPrice] = useState("asc");
+  const [orderType, setOrderType] = useState("asc");
+  function handleOrderChange(e) {
+    setOrderType(e.target.value);
+  }
+
+  const [inputValues, setInputValues] = useState({input1: 0, input2: 0});
+  function onChangeHandler(e) {
+    setInputValues({...inputValues, [e.target.name] : +e.target.value})
+  }
 
   useEffect(() => {
     fetchAdsByCategory({
       variables: {
         categoryName: filterValue,
         orderBy: {
-          price: byPrice
-          // created ago: byDate,
+          price: orderType
         },
       },
     });
-  }, [fetchAdsByCategory, filterValue, byPrice, /* byDate */]);
+  }, [fetchAdsByCategory, filterValue, orderType ]);
+
+  let orderEntries = Object.entries({ price: orderType });
+  console.log(orderEntries);
+
+  
 
   if (loading) return <Loader />;
-
   if (error) return <div>Something went wrong.</div>;
   
 
@@ -40,17 +49,12 @@ export default function NavList() {
     <section className=" py-6 font-medium text-[#373373] container max-w-[1140px] mx-auto flex justify-between">
       <div className="w-56">
         <h2 className="label_header " >Price order</h2>
-        <select name="sort" className=" h-min w-56  p-2 rounded text-[#"  value={byPrice} onChange={e=>setByPrice(e.target.value)} >
+        <select name="sort" className=" h-min w-56  p-2 rounded text-[#373373]"   onChange={handleOrderChange} >
           <option value="">Sort by price</option>
           <option value="asc">High to Low</option>
           <option value="desc">Low to High</option>
         </select>
       </div>
-      {/* <select name="" id="">
-        <option value="">Sort by date</option>
-        <option value="">Newest</option>
-        <option value="">Oldest</option>
-      </select> */}
 
       <div className=" ml-10 w-full ">
         <h1 className=" my-6 text-2xl w-full">
