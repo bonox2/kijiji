@@ -18,10 +18,6 @@ export default function NavList() {
     setOrderType(e.target.value);
   }
 
-  const [inputValues, setInputValues] = useState({input1: 0, input2: 0});
-  function onChangeHandler(e) {
-    setInputValues({...inputValues, [e.target.name] : +e.target.value})
-  }
 
   useEffect(() => {
     fetchAdsByCategory({
@@ -34,8 +30,8 @@ export default function NavList() {
     });
   }, [fetchAdsByCategory, filterValue, orderType ]);
 
-  let orderEntries = Object.entries({ price: orderType });
-  console.log(orderEntries);
+  // let orderEntries = Object.entries({ orderBy: { createdAt: orderType }});
+  // console.log(orderEntries);
 
   
 
@@ -49,11 +45,18 @@ export default function NavList() {
     <section className=" py-6 font-medium text-[#373373] container max-w-[1140px] mx-auto flex justify-between">
       <div className="w-56">
         <h2 className="label_header " >Price order</h2>
-        <select name="sort" className=" h-min w-56  p-2 rounded text-[#373373]"   onChange={handleOrderChange} >
-          <option value="">Sort by price</option>
+        <select name="sort" className=" h-min w-56  p-2 rounded text-[#373373]"    onChange={handleOrderChange} >
+          <option disabled value="">Sort by price</option>
           <option value="asc">High to Low</option>
           <option value="desc">Low to High</option>
         </select>
+
+        {/* <h2 className="label_header " >Date order</h2>
+        <select name="sort" className=" h-min w-56  p-2 rounded text-[#373373]" value={"createdAt"}   onChange={handleOrderChange} >
+          <option disabled value="">Sort by date</option>
+          <option value="asc">High to Low</option>
+          <option value="desc">Low to High</option>
+        </select> */}
       </div>
 
       <div className=" ml-10 w-full ">
