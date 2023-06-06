@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <>
       <header className="bg-white">
-        <div className="container max-w-[1140px] mx-auto py-5 flex justify-between items-center flex-row">
+        <div className="container max-w-[1140px] mx-auto py-5 px-4 flex justify-between items-center flex-row">
           <Link href="/">
             <div className="hover:cursor-pointer flex justify-center items-center">
               <Image src="/logo.png" alt="Company logo" width={65} height={0} />
@@ -60,7 +60,7 @@ export default function Header() {
 
             <Link
               href="/post-ad"
-              className="text-white font-bold transition-colors ease-linear duration-200 px-4 py-3 
+              className="text-white font-bold whitespace-nowrap transition-colors ease-linear duration-200 px-4 py-3 
               rounded shadow-lg  bg-[#373373] hover:bg-[#4a4675]">
               Post ad
             </Link>

@@ -42,11 +42,11 @@ export default function NavList() {
   const ads = data?.ads || [];
 
   return (
-    <section className=" py-6 font-medium text-[#373373] container max-w-[1140px] mx-auto flex justify-between">
+    <section className=" py-6 font-medium text-[#373373] container max-w-[1140px] mx-auto px-4 flex justify-between">
       <div className="w-56">
         <h2 className="label_header " >Price order</h2>
         <select name="sort" className=" h-min w-56  p-2 rounded text-[#373373]"    onChange={handleOrderChange} >
-          <option disabled value="">Sort by price</option>
+          <option disabled selected value="">Sort by price</option>
           <option value="asc">High to Low</option>
           <option value="desc">Low to High</option>
         </select>

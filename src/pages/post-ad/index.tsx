@@ -3,7 +3,7 @@
 export default function PostAdPage() {
   return (
     <>
-    <div className="container mx-auto max-w-[1140px] py-5">
+    <div className="container mx-auto max-w-[1140px] py-5 px-4">
         <h1 className="text-3xl font-bold text-[#373373] text-center">Post Ad</h1>
         <form className="flex flex-col mx-auto max-w-[600px]">
             <div className="flex flex-col">
