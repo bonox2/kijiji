@@ -7,6 +7,7 @@ export const AD_Q = gql`
       title
       price
       description
+      createdAt
       coverImg {
         id
         url

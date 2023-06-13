@@ -33,9 +33,8 @@ export default function Product() {
   if (loading) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
 
-  // const adStamp = adData.attributes.createdAt.slice(0, -1);
-  // const adDateTime = adStamp.split('T');
-  // const adCreatedAtAgo = timeAgo(new Date(`${adDateTime[0]} ${adDateTime[1]}`));
+  const adDateTime = adData.ad.createdAt
+  const adCreatedAtAgo = timeAgo(new Date(adDateTime));
 
   const userStamp = adData.ad.seller.user.createdAt;
   const adSellerCreatedAtAgo = timeAgo(new Date(userStamp));
@@ -105,7 +104,7 @@ export default function Product() {
 
             <div className="flex flex-col">
               <span className="text-gray-600 text-sm">
-                Posted about /*adCreatedAtAgo */ ago
+                Posted about {adCreatedAtAgo}
               </span>
 
               <span className="text-sm font-bold text-gray-800">
@@ -156,7 +155,6 @@ export default function Product() {
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col justify-center items-center  w-full">
                 <span className="text-base font-normal leading-6 text-center whitespace-nowrap ">
-                  {" "}
                   1 day
                 </span>
                 <span className="text-xs font-normal leading-4 text-gray-600 text-center whitespace-nowrap">
@@ -176,7 +174,6 @@ export default function Product() {
               <div className="flex flex-col justify-center items-center  border-[#eee] border-l-2 w-full">
                 <span className="text-base font-normal leading-6 text-center whitespace-nowrap">
                   {adSellerCreatedAtAgo}
-                  {}
                 </span>
                 <span className="text-xs font-normal leading-4 text-gray-600 text-center whitespace-nowrap">
                   on Kijiji

@@ -52,14 +52,14 @@ export default function SearchPage() {
           onChange={handleOrderChange}
           value={sortSelectValue}
         >
-          <option value="price/asc">Price (high to low)</option>
+          <option value="createdAt/asc">Newest First</option>
+          <option value="createdAt/desc">Latest First</option>
           <option value="price/desc">Price (low to high)</option>
+          <option value="price/asc">Price (high to low)</option>
           <option value="title/asc">Title (A to Z)</option>
           <option value="title/desc">Title (Z to A)</option>
           <option value="description/asc">Description (A to Z)</option>
           <option value="description/desc">Description (Z to A)</option>
-          <option value="createdAt/asc">Newest First</option>
-          <option value="createdAt/desc">Latest First</option>
         </select>
       </div>
       <div className="flex-1 ml-10">
