@@ -14,7 +14,7 @@ export default function SearchAdCard({
   
  
   return (
-    <section className=" bg-white hover:drop-shadow  w-[880px] rounded-md mb-6">
+    <section className=" bg-white hover:drop-shadow  w-full rounded-md mb-6">
       <Link href={adLink}>
         <div className="flex py-5 px-6 ">
           <Image

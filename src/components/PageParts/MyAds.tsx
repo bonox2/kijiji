@@ -14,7 +14,7 @@ export default function MyAds() {
   return (
     <>
       <AccNavbar />
-      <div className="container max-w-[1140px] mx-auto ">
+      <div className="container max-w-[1140px] mx-auto px-4 ">
         <h1 className=" text-2xl font-bold py-7 mb-2 text-[#3e4153]">My Ads</h1>
         <section className="flex justify-between items-center ">
           <div>

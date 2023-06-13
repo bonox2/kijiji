@@ -42,7 +42,7 @@ export default function Product() {
 
   return (
     <>
-      <main className="container w-[1140px] mx-auto py-5 flex flex-nowrap justify-between ">
+      <main className="container w-[1140px] mx-auto px-4 py-5 flex flex-nowrap justify-between ">
         <article className="w-[500px];">
           <section className="flex justify-center items-start flex-col">
             <h1 className="text-[24px] font-bold  text-[#3e4153] ;">
