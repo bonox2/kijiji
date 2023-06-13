@@ -23,6 +23,7 @@ export const ADS_BY_CATEGORY_Q = gql`
         id
         url
       }
+      createdAt
     }
   }
 `;

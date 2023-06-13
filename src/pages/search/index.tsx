@@ -12,7 +12,7 @@ export default function SearchPage() {
     useLazyQuery(SEARCH_ADS_Q);
 
   const [orderType, setOrderType] = useState({
-    price: "asc",
+    createdAt: "asc",
   });
 
   const sortSelectValue = Object.entries(orderType).flat().join("/");
@@ -58,6 +58,8 @@ export default function SearchPage() {
           <option value="title/desc">Title (Z to A)</option>
           <option value="description/asc">Description (A to Z)</option>
           <option value="description/desc">Description (Z to A)</option>
+          <option value="createdAt/asc">Newest First</option>
+          <option value="createdAt/desc">Latest First</option>
         </select>
       </div>
       <div className="flex-1 ml-10">

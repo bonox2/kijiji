@@ -24,6 +24,7 @@ export const SEARCH_ADS_Q = gql`
         id
         url
       }
+      createdAt
     }
   }
 `;
