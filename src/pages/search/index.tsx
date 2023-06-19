@@ -11,7 +11,7 @@ export default function SearchPage() {
   const [fetchAdsByCategory, { data, loading, error }] =
     useLazyQuery(SEARCH_ADS_Q);
 
-  const [orderType, setOrderType] = useState({
+  const [orderType, setOrderType] = useState<any>({
     createdAt: "asc",
   });
 
@@ -36,6 +36,7 @@ export default function SearchPage() {
   }, [fetchAdsByCategory, orderType, q, category]);
 
   if (loading) return <Loader />;
+
   if (error) return <div>Something went wrong.</div>;
 
   const ads = data?.ads || [];

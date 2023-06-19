@@ -27,7 +27,7 @@ export default function SearchPage() {
                 const adName = ad.title;
                 const adId = ad.id;
                 const price = ad.price;
-                const adCoverImg = ad.coverImg.url;
+                const adCoverImg = ad.coverImg?.url;
                 const adLink = "/ads/" + adId;
                 return (
                   <AdCard

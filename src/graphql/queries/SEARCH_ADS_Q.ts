@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const SEARCH_ADS_Q = gql`
-  query SearchAds($categoryName: String!, $query: String, $orderBy: [AdOrderByInput!]) {
+  query SearchAds($categoryName: String, $query: String, $orderBy: [AdOrderByInput!]) {
     ads(
       orderBy: $orderBy
       where: {

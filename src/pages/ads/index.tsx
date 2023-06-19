@@ -38,7 +38,10 @@ export default function NavList() {
   }, [fetchAdsByCategory, filterValue, orderType]);
 
   if (loading) return <Loader />;
-  if (error) return <div>Something went wrong.</div>;
+  if (error) {
+    console.log(error);
+    return <div>Something went wrong.</div>;
+  };
 
   const ads = data?.ads || [];
 
