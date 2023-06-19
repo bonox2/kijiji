@@ -44,58 +44,60 @@ export default function SearchPage() {
   console.log({ ads });
 
   return (
-    <section className=" container max-w-[1140px] mx-auto px-4 flex justify-between">
-      <div className="w-56">
-        <h2 className="label_header ">Order by</h2>
-        <select
-          name="sort"
-          className=" h-min w-56  p-2 rounded text-[#373373]"
-          onChange={handleOrderChange}
-          value={sortSelectValue}
-        >
-          <option value="createdAt/asc">Newest First</option>
-          <option value="createdAt/desc">Latest First</option>
-          <option value="price/desc">Price (low to high)</option>
-          <option value="price/asc">Price (high to low)</option>
-          <option value="title/asc">Title (A to Z)</option>
-          <option value="title/desc">Title (Z to A)</option>
-          <option value="description/asc">Description (A to Z)</option>
-          <option value="description/desc">Description (Z to A)</option>
-        </select>
-      </div>
-      <div className="flex-1 ml-10">
-        <h1 className="my-6 text-2xl w-full  text-[#42509f]">{category}</h1>
-        {ads?.length > 0 && (
-          <div className="flex flex-col items-center justify-start">
-            {ads?.map((ad) => {
-              const adName = ad.title;
-              const adId = ad.id;
-              const price = ad.price;
-              const adCoverImg = ad.coverImg.url;
-              const adLink = "/ads/" + adId;
-              const adDescription = ad.description;
-              const adCity = ad.address.locality;
-              // const adStamp = ad.createdAt.slice(0, -1);
-              // const adDateTime = adStamp?.split("T");
-              // const adCreatedAtAgo = timeAgo(
-              //   new Date(`${adDateTime[0]} ${adDateTime[1]}`)
-              // );
-              return (
-                <SearchAdCard
-                  adLink={adLink}
-                  key={adId}
-                  title={adName}
-                  imgLink={adCoverImg}
-                  price={price}
-                  description={adDescription}
-                  city={adCity}
-                  // timeAgo={adCreatedAtAgo}
-                />
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </section>
+    <>
+      <section className=" container max-w-[1140px] mx-auto px-4 flex justify-between">
+        <div className="w-56">
+          <h2 className="label_header ">Order by</h2>
+          <select
+            name="sort"
+            className=" h-min w-56  p-2 rounded text-[#373373]"
+            onChange={handleOrderChange}
+            value={sortSelectValue}
+          >
+            <option value="createdAt/asc">Newest First</option>
+            <option value="createdAt/desc">Latest First</option>
+            <option value="price/desc">Price (low to high)</option>
+            <option value="price/asc">Price (high to low)</option>
+            <option value="title/asc">Title (A to Z)</option>
+            <option value="title/desc">Title (Z to A)</option>
+            <option value="description/asc">Description (A to Z)</option>
+            <option value="description/desc">Description (Z to A)</option>
+          </select>
+        </div>
+        <div className="flex-1 ml-10">
+          <h1 className="my-6 text-2xl w-full  text-[#42509f]">{category}</h1>
+          {ads?.length > 0 && (
+            <div className="flex flex-col items-center justify-start">
+              {ads?.map((ad) => {
+                const adName = ad.title;
+                const adId = ad.id;
+                const price = ad.price;
+                const adCoverImg = ad.coverImg.url;
+                const adLink = "/ads/" + adId;
+                const adDescription = ad.description;
+                const adCity = ad.address.locality;
+                // const adStamp = ad.createdAt.slice(0, -1);
+                // const adDateTime = adStamp?.split("T");
+                // const adCreatedAtAgo = timeAgo(
+                //   new Date(`${adDateTime[0]} ${adDateTime[1]}`)
+                // );
+                return (
+                  <SearchAdCard
+                    adLink={adLink}
+                    key={adId}
+                    title={adName}
+                    imgLink={adCoverImg}
+                    price={price}
+                    description={adDescription}
+                    city={adCity}
+                    // timeAgo={adCreatedAtAgo}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

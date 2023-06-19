@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { CREATE_AD_M } from '../../graphql/mutations/CREATE_AD_M';
+import PostAdSuccess from '../../components/PageParts/PostAdSuccess';
 
 export default function PostAdPage() {
   const [createAdMutation, { data, loading, error }] = useMutation(CREATE_AD_M);
@@ -19,6 +20,7 @@ export default function PostAdPage() {
 
   return (
     <>
+      <PostAdSuccess />
       <div className="container mx-auto max-w-[1140px] py-5 px-4">
         <h1 className="text-3xl font-bold text-[#373373] text-center">
           Post Ad
