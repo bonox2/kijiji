@@ -32,11 +32,21 @@ export default function Product() {
   if (loading) return <Loader />;
   if (error) return <div>Something went wrong.</div>;
 
-  const adDateTime = adData?.ad.createdAt;
+  const adDateTime = adData.ad.createdAt;
   const adCreatedAtAgo = timeAgo(new Date(adDateTime));
 
-  const userStamp = adData.ad.seller?.user.createdAt;
+  const userStamp = adData.ad.seller.user.createdAt;
   const adSellerCreatedAtAgo = timeAgo(new Date(userStamp));
+
+  const title = adData.ad.title;
+  const price = adData.ad.price;
+  const description = adData.ad.description;
+  const location = adData.ad.location;
+  const sellerName = adData.ad.seller.user.name;
+  const sellerEmail = adData.ad.seller.user.email;
+  const sellerPhone = adData.ad.seller.user.phone;
+  
+
 
   return (
     <>
@@ -45,10 +55,10 @@ export default function Product() {
           <section className="flex justify-between items-start ">
             <div>
               <h1 className="text-[24px] font-bold  text-[#3e4153]  max-w-650px line-clamp-2 truncate">
-                {adData.ad.title}
+                {title}
               </h1>
               <span className="text-[24px] text-[#37a864] mb-2">
-                $ {adData.ad.price}
+                $ {price}
               </span>
             </div>
               <div className="flex justify-center items-center mb-5 ">
@@ -66,7 +76,7 @@ export default function Product() {
                   </span>
 
                   <span className="text-lg font-bold text-gray-800">
-                    {adData.ad.address?.addressLine1}
+                    {location}
                   </span>
                 </div>
               </div>
@@ -85,7 +95,7 @@ export default function Product() {
               <aside className="w-96 min-w-96 flex ml-8 flex-col justify-start items-start ">
                 <div className="flex w-full  flex-col justify-center items-center rounded bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)] mb-5 px-5 py-[25px]">
                   <h3 className="box-border text-[18px] text-indigo-900 text-base relative text-center font-medium px-[20px]  mb-5 ;">
-                    Contact {adData.ad.seller?.user.name}
+                    Contact {sellerName}
                   </h3>
 
                   <form action="submit" name="contactTo">
@@ -94,6 +104,7 @@ export default function Product() {
                       name="message"
                       className=" h-[120px] resize-none py-5 px-3 border-[1px] rounded border-solid  text-[#8e909b] mb-5  text-base min-w-0 w-full"
                     ></textarea>
+                    
                     <button
                       type="submit"
                       className="text-white py-2 w-[100%] bg-[#3e4153] rounded"
@@ -112,15 +123,15 @@ export default function Product() {
           hover:text-[#155e9b] hover:underline font-semibold	rounded-full overflow-hidden"
                   >
                     <Image
-                      src={adData.ad.seller?.avatar.url}
+                      src={adData.ad.seller.avatar.url}
                       alt="Profile picture"
                       width={40}
                       height={40}
                     />
-                    <span>{adData.ad.seller?.user.name}</span>
+                    <span>{adData.ad.seller.user.name}</span>
                   </Link>
 
-                  <span>{adData.ad.seller?.user.phone}</span>
+                  <span>{adData.ad.seller.user.phone}</span>
 
                   <div className="flex justify-between items-center w-full">
                     <div className="flex flex-col justify-center items-center  w-full">
@@ -155,11 +166,11 @@ export default function Product() {
             </div>
             <div className="flex gap-7 w-full overflow-x-auto my-4">
               <Image
-                src={adData.ad.coverImg?.url}
+                src={adData.ad.coverImg.url}
                 alt="Picture of the product"
                 width={150}
                 height={100}
-                onClick={() => setSrc(adData.ad?.coverImg.url)}
+                onClick={() => setSrc(adData.ad.coverImg.url)}
                 className="cursor-pointer w-[150px] h-[100px] object-cover"
               />
               {adData.ad.images.map((image) => (

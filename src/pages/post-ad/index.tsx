@@ -1,9 +1,11 @@
 import { useMutation } from '@apollo/client';
 import { CREATE_AD_M } from '../../graphql/mutations/CREATE_AD_M';
 import PostAdSuccess from '../../components/PageParts/PostAdSuccess';
+import { useState } from 'react';
 
 export default function PostAdPage() {
   const [createAdMutation, { data, loading, error }] = useMutation(CREATE_AD_M);
+  const [stateCreated, setStateCreated] = useState(false);
 
   const createAd = async (e) => {
     e.preventDefault();
@@ -16,11 +18,19 @@ export default function PostAdPage() {
         categoryId: 'clgju2h9l0002t1akfai58xxo'
       }
     });
+    setStateCreated(true);
   };
+
+  const imgId = data?.createAd?.ad?.id;
+  const imgLink = `/ads/${imgId}`;
 
   return (
     <>
-      <PostAdSuccess />
+      {stateCreated && 
+        <div className='sticky h-full top-0 left-0'>
+          <PostAdSuccess  imgLink={imgLink} imgId={imgId}/>
+        </div>}
+
       <div className="container mx-auto max-w-[1140px] py-5 px-4">
         <h1 className="text-3xl font-bold text-[#373373] text-center">
           Post Ad
