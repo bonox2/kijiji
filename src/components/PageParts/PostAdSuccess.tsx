@@ -24,8 +24,7 @@ export default function PostAdSuccess({imgId, imgLink  }) {
                 <Link
                   href="/"
                   className="text-white font-bold whitespace-nowrap transition-colors ease-linear duration-200 px-4 py-3 
-                  rounded shadow-lg  bg-[#373373] hover:bg-[#4a4675]"
-                  onClick={refreshPage}>
+                  rounded shadow-lg  bg-[#373373] hover:bg-[#4a4675]">
                   Go back
                 </Link>
                 <Link
