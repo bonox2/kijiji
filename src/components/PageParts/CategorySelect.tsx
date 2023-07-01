@@ -1,30 +1,26 @@
-import { POST_CATEGORIES_Q } from '../../graphql/queries/POST_CATEGORIES_Q';
-import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 
-export default function PostAdSuccess( filterValue) {
-    
-  const { data, error, loading } = useQuery(POST_CATEGORIES_Q);
-
-  const [selectedCategory, setSelectedCategory] = useState("");
-//   const categoryNames = filterValue;
-  const categoryNames = data?.subcategories || [];
-
-    return(
-        <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              name="category"
-              className="input_outline" 
-            >
-              {categoryNames.map((categoryName) => {
-                const { id,name } = categoryName;
-                return (
-                  <option key={id} value={id}>
-                    {name}
-                  </option>
-                );
-              })}
-            </select>
-    )
+export default function CategorySelect({ items, name, onChange }: any) {
+  return (
+    <select
+      onChange={(e) => {
+        if (onChange) onChange(e.target.value)
+      }}
+      name={name}
+      defaultValue={""}
+      disabled={!items.length}
+      className="input_outline">
+      <option value="" className="capitalize">
+        Select {name}
+      </option>
+      {items.map((category) => {
+        const { id, name } = category;
+        return (
+          <option key={id} value={id}>
+            {name}
+          </option>
+        );
+      })}
+    </select>
+  );
 }

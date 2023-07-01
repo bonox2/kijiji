@@ -1,15 +1,26 @@
-import { useMutation } from "@apollo/client";
-import { CREATE_AD_M } from "../../graphql/mutations/CREATE_AD_M";
-import PostAdSuccess from "../../components/PageParts/PostAdSuccess";
-import { useState } from "react";
-import CategorySelect from "../../components/PageParts/CategorySelect";
+import { useMutation } from '@apollo/client';
+import { CREATE_AD_M } from '../../graphql/mutations/CREATE_AD_M';
+import PostAdSuccess from '../../components/PageParts/PostAdSuccess';
+import { useState, useRef, useEffect } from 'react';
+import CategorySelect from '../../components/PageParts/CategorySelect';
 import { CATEGORIES_Q } from '../../graphql/queries/CATEGORIES_Q';
 import { useQuery } from '@apollo/client';
 
 export default function PostAdPage() {
+  const formRef = useRef(null);
+
+  const [selectedCategory, setSelectedCategory] = useState('');
+
   const [createAdMutation, { data, loading, error }] = useMutation(CREATE_AD_M);
+  const { data: categoriesData, error: categoriesError } =
+    useQuery(CATEGORIES_Q);
+
   const [stateCreated, setStateCreated] = useState(false);
 
+  const categories = categoriesData?.categories || [];
+  const subcategories =
+    categories.find((category) => category.id === selectedCategory)
+      ?.subcategories || [];
 
   const createAd = async (e) => {
     e.preventDefault();
@@ -17,28 +28,38 @@ export default function PostAdPage() {
     const title = form.title.value;
     const description = form.description.value;
     const price = form.price.value;
+    const categoryId = form.category.value;
+    const subcategoryId = form.subcategory.value;
 
     createAdMutation({
       variables: {
         title,
-        // categoryId: selectedCategory,
+        categoryId,
+        subcategoryId,
         description,
-        price,
-      },
+        price
+      }
     });
     setStateCreated(true);
   };
 
-  const imgId = data?.createAd?.ad?.id;
-  const imgLink = `/ads/${imgId}`;
+  useEffect(() => {
+    if (!stateCreated) {
+      formRef.current.reset();
+    }
+  }, [stateCreated])
   
-  
+
+  const createdAdId = data?.createAd?.id;
 
   return (
     <>
       {stateCreated && (
         <div className="sticky h-full top-0 left-0">
-          <PostAdSuccess imgLink={imgLink} imgId={imgId} />
+          <PostAdSuccess
+            createdAdId={createdAdId}
+            onCreateNew={() => setStateCreated(false)}
+          />
         </div>
       )}
 
@@ -47,9 +68,9 @@ export default function PostAdPage() {
           Post Ad
         </h1>
         <form
+          ref={formRef}
           className="flex flex-col mx-auto max-w-[600px]"
-          onSubmit={createAd}
-        >
+          onSubmit={createAd}>
           <div className="flex flex-col">
             <label className="label_header" htmlFor="title">
               Title
@@ -71,8 +92,7 @@ export default function PostAdPage() {
               name="description"
               id="description"
               cols={30}
-              rows={10}
-            ></textarea>
+              rows={10}></textarea>
           </div>
 
           <div className="flex flex-col">
@@ -100,13 +120,17 @@ export default function PostAdPage() {
             <label className="label_header" htmlFor="category">
               Category
             </label>
-            <CategorySelect filterValue={data?.categories || []}/>
+            <CategorySelect
+              name="category"
+              items={categories}
+              onChange={setSelectedCategory}
+            />
           </div>
           <div className="flex flex-col">
             <label className="label_header" htmlFor="subcategory">
               Subcategory
             </label>
-            <CategorySelect filterValue={data?.subcategories || []}/>
+            <CategorySelect name="subcategory" items={subcategories} />
           </div>
 
           <div className="flex flex-col">
@@ -136,8 +160,7 @@ export default function PostAdPage() {
 
           <button
             type="submit"
-            className="text-white  font-bold transition-colors ease-linear duration-200 px-8 py-3 rounded shadow-2xl mt-5  bg-[#373373] hover:bg-[#4a4675]"
-          >
+            className="text-white  font-bold transition-colors ease-linear duration-200 px-8 py-3 rounded shadow-2xl mt-5  bg-[#373373] hover:bg-[#4a4675]">
             Post Ad
           </button>
         </form>
