@@ -80,6 +80,7 @@ export default function PostAdPage() {
               type="text"
               name="title"
               id="title"
+              required
             />
           </div>
 
@@ -104,6 +105,7 @@ export default function PostAdPage() {
               type="number"
               name="price"
               id="price"
+              required
             />
           </div>
 
@@ -117,20 +119,21 @@ export default function PostAdPage() {
           </div>
 
           <div className="flex flex-col">
-            <label className="label_header" htmlFor="category">
+            <label className="label_header" htmlFor="category" >
               Category
             </label>
             <CategorySelect
               name="category"
               items={categories}
               onChange={setSelectedCategory}
+              required
             />
           </div>
           <div className="flex flex-col">
             <label className="label_header" htmlFor="subcategory">
               Subcategory
             </label>
-            <CategorySelect name="subcategory" items={subcategories} />
+            <CategorySelect name="subcategory" items={subcategories} required/>
           </div>
 
           <div className="flex flex-col">

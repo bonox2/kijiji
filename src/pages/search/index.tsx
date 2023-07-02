@@ -72,15 +72,10 @@ export default function SearchPage() {
                 const adName = ad.title;
                 const adId = ad.id;
                 const price = ad.price;
-                const adCoverImg = ad.coverImg.url;
+                const adCoverImg = ad.coverImg?.url;
                 const adLink = "/ads/" + adId;
                 const adDescription = ad.description;
-                const adCity = ad.address.locality;
-                // const adStamp = ad.createdAt.slice(0, -1);
-                // const adDateTime = adStamp?.split("T");
-                // const adCreatedAtAgo = timeAgo(
-                //   new Date(`${adDateTime[0]} ${adDateTime[1]}`)
-                // );
+                const adCity = ad.address?.locality;
                 return (
                   <SearchAdCard
                     adLink={adLink}
@@ -90,7 +85,6 @@ export default function SearchPage() {
                     price={price}
                     description={adDescription}
                     city={adCity}
-                    // timeAgo={adCreatedAtAgo}
                   />
                 );
               })}

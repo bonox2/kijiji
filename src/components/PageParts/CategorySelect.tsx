@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function CategorySelect({ items, name, onChange }: any) {
   return (
     <select
       onChange={(e) => {
-        if (onChange) onChange(e.target.value)
+        if (onChange) onChange(e.target.value);
       }}
       name={name}
       defaultValue={""}
       disabled={!items.length}
-      className="input_outline">
+      className="input_outline"
+    >
       <option value="" className="capitalize">
         Select {name}
       </option>

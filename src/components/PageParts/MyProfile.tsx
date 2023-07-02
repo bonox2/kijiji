@@ -1,15 +1,17 @@
-
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function MyProfile() {
   const router = useRouter();
   const { asPath } = router;
-  
-  const activeClassL = asPath.endsWith('/listings') ? 'btn_active_left' : 'account_btn_left';
-  const activeClassR = asPath.endsWith('/reviews') ? 'btn_active_left' : 'account_btn_left';
 
+  const activeClassL = asPath.endsWith("/listings")
+    ? "btn_active_left"
+    : "account_btn_left";
+  const activeClassR = asPath.endsWith("/reviews")
+    ? "btn_active_left"
+    : "account_btn_left";
 
   return (
     <>
@@ -80,7 +82,6 @@ export default function MyProfile() {
               Reviews <span>0</span>
             </Link>
           </div>
-
         </section>
       </aside>
     </>

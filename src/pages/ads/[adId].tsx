@@ -25,7 +25,7 @@ export default function Product() {
 
   useEffect(() => {
     if (adData) {
-      setSrc(adData.ad.coverImg.url);
+      setSrc(adData.ad.coverImg?.url);
     }
   }, [adData]);
 
@@ -35,19 +35,17 @@ export default function Product() {
   const adDateTime = adData.ad.createdAt;
   const adCreatedAtAgo = timeAgo(new Date(adDateTime));
 
-  const userStamp = adData.ad.seller.user.createdAt;
+  const userStamp = adData.ad.seller?.user.createdAt;
   const adSellerCreatedAtAgo = timeAgo(new Date(userStamp));
 
   const title = adData.ad.title;
   const price = adData.ad.price;
   const description = adData.ad.description;
   const location = adData.ad.location;
-  const sellerName = adData.ad.seller.user.name;
-  const sellerEmail = adData.ad.seller.user.email;
-  const sellerPhone = adData.ad.seller.user.phone;
+  const sellerName = adData.ad.seller?.user.name;
+  const sellerEmail = adData.ad.seller?.user.email;
+  const sellerPhone = adData.ad.seller?.user.phone;
   
-
-
   return (
     <>
       <main className="container w-[1140px] mx-auto px-4 py-5 flex flex-nowrap justify-between ">
@@ -123,15 +121,15 @@ export default function Product() {
           hover:text-[#155e9b] hover:underline font-semibold	rounded-full overflow-hidden"
                   >
                     <Image
-                      src={adData.ad.seller.avatar.url}
+                      src={adData.ad.seller?.avatar.url}
                       alt="Profile picture"
                       width={40}
                       height={40}
                     />
-                    <span>{adData.ad.seller.user.name}</span>
+                    <span>{sellerName}</span>
                   </Link>
 
-                  <span>{adData.ad.seller.user.phone}</span>
+                  <span>{sellerPhone}</span>
 
                   <div className="flex justify-between items-center w-full">
                     <div className="flex flex-col justify-center items-center  w-full">
@@ -166,7 +164,7 @@ export default function Product() {
             </div>
             <div className="flex gap-7 w-full overflow-x-auto my-4">
               <Image
-                src={adData.ad.coverImg.url}
+                src={adData.ad.coverImg?.url}
                 alt="Picture of the product"
                 width={150}
                 height={100}
@@ -175,8 +173,8 @@ export default function Product() {
               />
               {adData.ad.images.map((image) => (
                 <Image
-                  key={image.file.id}
-                  src={image.file.url}
+                  key={image.file?.id}
+                  src={image.file?.url}
                   alt="Picture of the product"
                   width={150}
                   height={100}
@@ -191,7 +189,7 @@ export default function Product() {
               Description
             </h2>
 
-            <p className="w-[100%] card_description">{adData.ad.description}</p>
+            <p className="w-[100%] card_description">{description}</p>
 
             <span>{adData.ad.views}</span>
           </section>

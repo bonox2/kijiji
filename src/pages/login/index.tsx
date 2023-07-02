@@ -4,17 +4,6 @@ import Input from '../../components/PageParts/Input';
 
 
 export default function Login() {
-  // const dispatch = useDispatch();
-  // function logIn(e) {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   dispatch(
-  //     setLogInThunk({
-  //       email: form.email.value.trim(),
-  //       password: form.password.value.trim(),
-  //     })
-  //   );
-  // }
   return (
     <>
       <section className="authorization w-[550px] mx-auto">

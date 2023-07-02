@@ -63,13 +63,6 @@ export default function NavList() {
           <option value="description/asc">Description (A to Z)</option>
           <option value="description/desc">Description (Z to A)</option>
         </select>
-
-        {/* <h2 className="label_header " >Date order</h2>
-        <select name="sort" className=" h-min w-56  p-2 rounded text-[#373373]" value={"createdAt"}   onChange={handleOrderChange} >
-          <option disabled value="">Sort by date</option>
-          <option value="asc">High to Low</option>
-          <option value="desc">Low to High</option>
-        </select> */}
       </div>
 
       <div className=" ml-10 flex-1 ">
@@ -87,11 +80,6 @@ export default function NavList() {
               const adLink = '/ads/' + adId;
               const adDescription = ad.description;
               const adCity = ad.address.locality;
-              // const adStamp = ad.createdAt.slice(0, -1);
-              // const adDateTime = adStamp?.split("T");
-              // const adCreatedAtAgo = timeAgo(
-              //   new Date(`${adDateTime[0]} ${adDateTime[1]}`)
-              // );
               return (
                 <SearchAdCard
                   adLink={adLink}
@@ -101,7 +89,6 @@ export default function NavList() {
                   price={price}
                   description={adDescription}
                   city={adCity}
-                  // timeAgo={adCreatedAtAgo}
                 />
               );
             })}

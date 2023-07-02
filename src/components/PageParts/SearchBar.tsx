@@ -1,19 +1,18 @@
-import Loader from './Loader';
-import { getData } from '../../services/api';
-import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/client';
-import { CATEGORIES_Q } from '../../graphql/queries/CATEGORIES_Q';
-import { useState, useEffect } from 'react';
+import Loader from "./Loader";
+import { getData } from "../../services/api";
+import { useRouter } from "next/router";
+import { useQuery } from "@apollo/client";
+import { CATEGORIES_Q } from "../../graphql/queries/CATEGORIES_Q";
+import { useState, useEffect } from "react";
 
 export default function SearchBar() {
   const router = useRouter();
   const { query } = router;
   const { category, q } = query;
 
-  const [queryValue, setQueryValue] = useState(q || '');
-  const [selectedCategory, setSelectedCategory] = useState(category || 'all');
+  const [queryValue, setQueryValue] = useState(q || "");
+  const [selectedCategory, setSelectedCategory] = useState(category || "all");
 
-  
   useEffect(() => {
     if (category) {
       //@ts-ignore
@@ -36,11 +35,11 @@ export default function SearchBar() {
     e.preventDefault();
 
     router.push({
-      pathname: '/search',
+      pathname: "/search",
       query: {
         category: selectedCategory,
-        q: queryValue
-      }
+        q: queryValue,
+      },
     });
   };
 
@@ -48,7 +47,8 @@ export default function SearchBar() {
     <div className="text-sm  ">
       <form
         className="flex justify-center items-center  flex-nowrap w-min text-gray-400"
-        onSubmit={filterSearch}>
+        onSubmit={filterSearch}
+      >
         <div className="whitespace-nowrap flex text-center justify-center items-center  transition-all duration-3000 bg-transparent text-inherit  py-3 px-5 border border-r-0 rounded-l ">
           <input
             type="text"
@@ -62,7 +62,8 @@ export default function SearchBar() {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            name="category">
+            name="category"
+          >
             <option value="all">All categories</option>
             {categoryNames.map((categoryName) => {
               const { name } = categoryName;
@@ -76,7 +77,8 @@ export default function SearchBar() {
         </div>
         <button
           type="submit"
-          className="whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 bg-transparent text-[#373373] hover:bg-[#373373] font-semibold hover:text-white text-inherit py-3 px-8 border hover:border-transparent rounded ">
+          className="whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 bg-transparent text-[#373373] hover:bg-[#373373] font-semibold hover:text-white text-inherit py-3 px-8 border hover:border-transparent rounded "
+        >
           Search
         </button>
       </form>
