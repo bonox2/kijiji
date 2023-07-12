@@ -88,6 +88,13 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
+  .ad_title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
 
 
   /* LOGIN & SIGN IN CSS */

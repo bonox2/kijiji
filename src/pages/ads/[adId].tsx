@@ -55,7 +55,7 @@ export default function Product() {
         <article className="w-full">
           <section className="flex justify-between items-start ">
             <div>
-              <h1 className="text-[24px] font-bold  text-[#3e4153]  whitespace-normal  truncate">
+              <h1 className="text-[24px] font-bold  text-[#273169]  ad_title">
                 {title}
               </h1>
               <span className="text-[24px] text-[#37a864] mb-2">
@@ -84,15 +84,17 @@ export default function Product() {
           </section>
           <section className="w-full">
             <div className="flex justify-between items-center w-full ">
-              {src && (
-                <Image
-                  src={src}
-                  alt="Picture of the product"
-                  width={700}
-                  height={445}
-                  className="w-[700px] h-[445px] object-cover"
-                />
-              )}
+              <div className="w-[700px] h-[445px]">
+                {src && (
+                  <Image
+                    src={src}
+                    alt="Picture of the product"
+                    width={700}
+                    height={445}
+                    className=" w-[700px] h-[445px] object-cover rounded-lg shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)]"
+                  />
+                )}
+              </div>
               <aside className="w-96 min-w-96 flex ml-8 flex-col justify-start items-start ">
                 <div className="flex w-full  flex-col justify-center items-center rounded bg-white shadow-[0_1px_2px_0_rgb(0_0_0_/_10%)] mb-5 px-5 py-[25px]">
                   <h3 className="box-border text-[18px] text-indigo-900 text-base relative text-center font-medium px-[20px]  mb-5 ;">
@@ -165,7 +167,7 @@ export default function Product() {
                 </div>
               </aside>
             </div>
-            <div className="flex gap-7 w-full overflow-x-auto my-4">
+            <div className="flex gap-7 w-full overflow-x-auto py-4 ">
               <Image
                 src={adData.ad.coverImg?.url}
                 alt="Picture of the product"
