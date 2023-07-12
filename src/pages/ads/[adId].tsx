@@ -55,7 +55,7 @@ export default function Product() {
         <article className="w-full">
           <section className="flex justify-between items-start ">
             <div>
-              <h1 className="text-[24px] font-bold  text-[#3e4153]  max-w-650px line-clamp-2 truncate">
+              <h1 className="text-[24px] font-bold  text-[#3e4153]  whitespace-normal  truncate">
                 {title}
               </h1>
               <span className="text-[24px] text-[#37a864] mb-2">
