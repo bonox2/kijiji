@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { CREATE_AD_M } from '../../graphql/mutations/CREATE_AD_M';
 import PostAdSuccess from '../../components/PageParts/PostAdSuccess';
+import Error from '../../components/PageParts/Error';
 import { useState, useRef, useEffect } from 'react';
 import CategorySelect from '../../components/PageParts/CategorySelect';
 import { CATEGORIES_Q } from '../../graphql/queries/CATEGORIES_Q';
@@ -28,6 +29,7 @@ export default function PostAdPage() {
     const title = form.title.value;
     const description = form.description.value;
     const price = form.price.value;
+    const address = form.address.value;
     const categoryId = form.category.value;
     const subcategoryId = form.subcategory.value;
 
@@ -37,7 +39,9 @@ export default function PostAdPage() {
         categoryId,
         subcategoryId,
         description,
-        price
+        address,
+        price,
+        createdAt: new Date().toISOString()
       }
     });
     setStateCreated(true);
@@ -50,6 +54,7 @@ export default function PostAdPage() {
   }, [stateCreated])
   
 
+  if (error) return <Error />;
   const createdAdId = data?.createAd?.id;
 
   return (
@@ -113,9 +118,7 @@ export default function PostAdPage() {
             <label className="label_header" htmlFor="address">
               Address
             </label>
-            <select className="input_outline" name="address" id="address">
-              <option value=""></option>
-            </select>
+            <input className="input_outline" type="text" name="address" id="address" required/>
           </div>
 
           <div className="flex flex-col">

@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,7 +13,7 @@ export default function PostAdSuccess({ createdAdId, onCreateNew }) {
             className="text-white font-bold whitespace-nowrap transition-colors ease-linear duration-200 px-4 py-3 
                   rounded shadow-lg  bg-[#373373] hover:bg-[#4a4675]"
           >
-            Go back
+            Go to ad
           </Link>
 
           <button

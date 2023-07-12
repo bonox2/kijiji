@@ -19,10 +19,7 @@ export const AD_Q = gql`
         }
       }
       views
-      address {
-        id
-        addressLine1
-      }
+      address 
       seller {
         id
         user {

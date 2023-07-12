@@ -246,5 +246,6 @@
     min-height: 40px;
     background: none;
     outline: none;
-    transition: 0.15s;
+    font-size: 1rem;
+    background: #fff;
 }

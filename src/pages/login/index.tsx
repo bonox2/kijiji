@@ -4,6 +4,7 @@ import Input from '../../components/PageParts/Input';
 
 
 export default function Login() {
+  
   return (
     <>
       <section className="authorization w-[550px] mx-auto">

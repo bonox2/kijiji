@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Loader from "../../components/PageParts/Loader";
+import Error from "../../components/PageParts/Error";
 import SearchAdCard from "../../components/PageParts/SearchAdCard";
 import { SEARCH_ADS_Q } from "../../graphql/queries/SEARCH_ADS_Q";
 import { useState, useEffect } from "react";
@@ -12,7 +13,7 @@ export default function SearchPage() {
     useLazyQuery(SEARCH_ADS_Q);
 
   const [orderType, setOrderType] = useState<any>({
-    createdAt: "asc",
+    price: "asc",
   });
 
   const sortSelectValue = Object.entries(orderType).flat().join("/");
@@ -36,8 +37,10 @@ export default function SearchPage() {
   }, [fetchAdsByCategory, orderType, q, category]);
 
   if (loading) return <Loader />;
-
-  if (error) return <div>Something went wrong.</div>;
+  if (error) {
+    console.log(error);
+    return <Error/>;
+  };
 
   const ads = data?.ads || [];
 

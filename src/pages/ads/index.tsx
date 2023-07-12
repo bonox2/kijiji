@@ -2,6 +2,7 @@
 //Subcategory page with rendered products
 import { useRouter } from 'next/router';
 import Loader from '../../components/PageParts/Loader';
+import Error from '../../components/PageParts/Error';
 import { useLazyQuery } from '@apollo/client';
 import { ADS_BY_CATEGORY_Q } from '../../graphql/queries/ADS_BY_CATEGORY_Q';
 import SearchAdCard from '../../components/PageParts/SearchAdCard';
@@ -15,7 +16,7 @@ export default function NavList() {
     useLazyQuery(ADS_BY_CATEGORY_Q);
 
   const [orderType, setOrderType] = useState({
-    createdAt: 'asc'
+    price: 'asc'
   });
 
   const sortSelectValue = Object.entries(orderType).flat().join('/');
@@ -40,7 +41,7 @@ export default function NavList() {
   if (loading) return <Loader />;
   if (error) {
     console.log(error);
-    return <div>Something went wrong.</div>;
+    return <Error/>;
   };
 
   const ads = data?.ads || [];

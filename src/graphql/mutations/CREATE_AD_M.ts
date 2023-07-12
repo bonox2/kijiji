@@ -6,6 +6,7 @@ export const CREATE_AD_M = gql`
     $categoryId: ID!
     $subcategoryId: ID!
     $price: String!
+    $address: String!
     $description: String
   ) {
     createAd(
@@ -14,6 +15,7 @@ export const CREATE_AD_M = gql`
         category: { connect: { id: $categoryId } }
         subcategory: { connect: { id: $subcategoryId } }
         price: $price
+        address: $address
         description: $description
       }
     ) {
@@ -21,6 +23,7 @@ export const CREATE_AD_M = gql`
       title
       price
       description
+      address
     }
   }
 `;

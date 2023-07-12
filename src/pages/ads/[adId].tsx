@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { timeAgo } from "../../utils/timeAgo";
 import Loader from "../../components/PageParts/Loader";
+import Error from "../../components/PageParts/Error";
 import { useQuery } from "@apollo/client";
 import { AD_Q } from "../../graphql/queries/AD_Q";
 import Link from "next/link";
@@ -30,7 +31,10 @@ export default function Product() {
   }, [adData]);
 
   if (loading) return <Loader />;
-  if (error) return <div>Something went wrong.</div>;
+  if (error) {
+    console.log(error);
+    return <Error/>;
+  };
 
   const adDateTime = adData.ad.createdAt;
   const adCreatedAtAgo = timeAgo(new Date(adDateTime));
@@ -41,9 +45,8 @@ export default function Product() {
   const title = adData.ad.title;
   const price = adData.ad.price;
   const description = adData.ad.description;
-  const location = adData.ad.location;
+  const address = adData.ad.address;
   const sellerName = adData.ad.seller?.user.name;
-  const sellerEmail = adData.ad.seller?.user.email;
   const sellerPhone = adData.ad.seller?.user.phone;
   
   return (
@@ -61,7 +64,7 @@ export default function Product() {
             </div>
               <div className="flex justify-center items-center mb-5 ">
                 <svg
-                  className="h-8 w-8 mr-3 text-gray-800"
+                  className="h-10 w-10 mr-3 text-gray-800"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 384 512"
                 >
@@ -69,12 +72,12 @@ export default function Product() {
                 </svg>
 
                 <div className="flex flex-col w-80">
-                  <span className="text-gray-600 text-lg">
-                    Posted about {adCreatedAtAgo}
+                <span className="text-lg font-bold text-gray-800">
+                    {address}
                   </span>
 
-                  <span className="text-lg font-bold text-gray-800">
-                    {location}
+                  <span className="text-gray-600 text-lg">
+                    Posted about {adCreatedAtAgo}
                   </span>
                 </div>
               </div>
