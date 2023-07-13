@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Loader css */
 .loader-main{
     position: absolute;
@@ -240,7 +241,7 @@
     font-weight: 500;
     line-height: 26px;
     color: #3e4153;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     margin-top: 25px;
 }
 

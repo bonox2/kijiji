@@ -44,7 +44,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="text-sm  ">
+    <div className="text-sm ">
       <form
         className="flex justify-center items-center  flex-nowrap w-min text-gray-400"
         onSubmit={filterSearch}

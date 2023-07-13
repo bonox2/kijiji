@@ -16,7 +16,7 @@ export default function Header() {
             </div>
           </Link>
 
-          <SearchBar />
+          <SearchBar/>
 
           <div className="flex flex-nowrap justify-center items-center ">
             <Link

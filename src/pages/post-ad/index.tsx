@@ -89,16 +89,16 @@ export default function PostAdPage() {
             />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col max-h-32">
             <label className="label_header" htmlFor="description">
               Description
             </label>
             <textarea
-              className="input_outline max-h-28"
+              className="input_outline min-h-16 "
               name="description"
               id="description"
               cols={30}
-              rows={10}></textarea>
+              rows={100}></textarea>
           </div>
 
           <div className="flex flex-col">
