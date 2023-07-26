@@ -15,10 +15,7 @@ export const ADS_BY_CATEGORY_Q = gql`
       title
       price
       description
-      address {
-        id
-        locality
-      }
+      address 
       coverImg {
         id
         url

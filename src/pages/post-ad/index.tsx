@@ -6,13 +6,19 @@ import { useState, useRef, useEffect } from 'react';
 import CategorySelect from '../../components/PageParts/CategorySelect';
 import { CATEGORIES_Q } from '../../graphql/queries/CATEGORIES_Q';
 import { useQuery } from '@apollo/client';
+import { useCustomMutation } from '../../hooks/useCustomMutation';
+import { CREATE_IMAGES_M } from '../../graphql/mutations/CREATE_IMAGES_M';
 
 export default function PostAdPage() {
   const formRef = useRef(null);
 
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  const [createAdMutation, { data, loading, error }] = useMutation(CREATE_AD_M);
+  const [createAdMutation, { data: createdAdData, error: createdAdError }] =
+    useCustomMutation(CREATE_AD_M);
+  const [createImagesMutation, { error: createImagesError }] =
+    useCustomMutation(CREATE_IMAGES_M);
+
   const { data: categoriesData, error: categoriesError } =
     useQuery(CATEGORIES_Q);
 
@@ -32,8 +38,12 @@ export default function PostAdPage() {
     const address = form.address.value;
     const categoryId = form.category.value;
     const subcategoryId = form.subcategory.value;
+    const coverImg = form.coverImg.files[0];
+    const images = Array.from(form.images.files);
 
-    createAdMutation({
+    console.log(images);
+
+    const createdAdResponse = await createAdMutation({
       variables: {
         title,
         categoryId,
@@ -41,9 +51,31 @@ export default function PostAdPage() {
         description,
         address,
         price,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        coverImg
       }
     });
+    console.log(createdAdResponse);
+
+    const createdAdId = createdAdResponse.data.createAd.id;
+
+    const createImagesData = images.map((imageFile) => {
+      return {
+        ad: { connect: { id: createdAdId } },
+        file: {
+          upload: imageFile
+        }
+      };
+    });
+
+    console.log(createImagesData);
+
+    await createImagesMutation({
+      variables: {
+        data: createImagesData
+      }
+    });
+
     setStateCreated(true);
   };
 
@@ -51,11 +83,11 @@ export default function PostAdPage() {
     if (!stateCreated) {
       formRef.current.reset();
     }
-  }, [stateCreated])
-  
+  }, [stateCreated]);
 
-  if (error) return <Error />;
-  const createdAdId = data?.createAd?.id;
+  if (createdAdError || createImagesError || categoriesError) return <Error />;
+
+  const createdAdId = createdAdData?.createAd?.id;
 
   return (
     <>
@@ -118,11 +150,17 @@ export default function PostAdPage() {
             <label className="label_header" htmlFor="address">
               Address
             </label>
-            <input className="input_outline" type="text" name="address" id="address" required/>
+            <input
+              className="input_outline"
+              type="text"
+              name="address"
+              id="address"
+              required
+            />
           </div>
 
           <div className="flex flex-col">
-            <label className="label_header" htmlFor="category" >
+            <label className="label_header" htmlFor="category">
               Category
             </label>
             <CategorySelect
@@ -136,7 +174,7 @@ export default function PostAdPage() {
             <label className="label_header" htmlFor="subcategory">
               Subcategory
             </label>
-            <CategorySelect name="subcategory" items={subcategories} required/>
+            <CategorySelect name="subcategory" items={subcategories} required />
           </div>
 
           <div className="flex flex-col">

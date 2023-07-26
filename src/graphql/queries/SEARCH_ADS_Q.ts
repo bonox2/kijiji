@@ -16,10 +16,7 @@ export const SEARCH_ADS_Q = gql`
       title
       price
       description
-      address {
-        id
-        locality
-      }
+      address 
       coverImg {
         id
         url
