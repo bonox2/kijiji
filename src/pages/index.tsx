@@ -17,6 +17,7 @@ export default function SearchPage() {
   const ads = data?.ads || [];
   return (
     <>
+      <Navbar />
       <section className="container mx-auto max-w-[1140px] px-4">
         {ads?.length > 0 && (
           <div className="flex flex-wrap justify-between items-center mt-7 w-full">

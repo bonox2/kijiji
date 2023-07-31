@@ -77,7 +77,7 @@ export default function NavList() {
               const adName = ad.title;
               const adId = ad.id;
               const price = ad.price;
-              const adCoverImg = ad.coverImg.url;
+              const adCoverImg = ad.coverImg?.url;
               const adLink = '/ads/' + adId;
               const adDescription = ad.description;
               const adCity = ad.address.locality;

@@ -9,8 +9,9 @@ export default function Header() {
   return (
     <>
       <header className="bg-white">
-        <div className="container max-w-[1140px] mx-auto py-5 px-4 flex justify-between items-center flex-row">
-          <Link href="/">
+        <div className="container max-w-[1140px] mx-auto py-5 px-4 flex  justify-between items-center flex-row
+        xl:flex-wrap">
+          <Link href="/" className="xl:order-1">
             <div className="hover:cursor-pointer flex justify-center items-center">
               <Image src="/logo.png" alt="Company logo" width={65} height={0} />
             </div>
@@ -18,10 +19,10 @@ export default function Header() {
 
           <SearchBar/>
 
-          <div className="flex flex-nowrap justify-center items-center ">
+          <div className="flex flex-nowrap justify-center items-center xl:order-2">
             <Link
               href="/login"
-              className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373]"
+              className="text-[#2681db] font-bold transition-colors ease-linear duration-200 underline hover:text-[#373373] whitespace-nowrap"
             >
               Sign in
             </Link>
@@ -30,14 +31,14 @@ export default function Header() {
 
             <Link
               href="/reg"
-              className="text-[#2681db] font-bold  transition-colors ease-linear duration-200 underline hover:text-[#373373]"
+              className="text-[#2681db] font-bold  transition-colors ease-linear duration-200 underline hover:text-[#373373] whitespace-nowrap"
             >
               Register
             </Link>
 
             <nav
               className="text-center w-10 font-medium text-[#373373] border-b-transparent
-             border-b-4 hover:cursor-pointer  relative group z-20 mx-10"
+             border-b-4 hover:cursor-pointer  relative group z-20 mx-10 "
             >
               <Image
                 src="/"

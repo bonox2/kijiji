@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/client";
 import { CATEGORIES_Q } from "../../graphql/queries/CATEGORIES_Q";
 
 export default function Navbar() {
-  console.log("Navbar");
   const { data, error } = useQuery(CATEGORIES_Q);
 
   const categories = data?.categories || [];

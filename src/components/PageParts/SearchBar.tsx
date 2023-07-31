@@ -44,16 +44,17 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="text-sm ">
+    <div className=" w-full text-sm mx-6 xl:order-3 xl:mx-0 xl:mt-7">
       <form
-        className="flex justify-center items-center  flex-nowrap w-min text-gray-400"
-        onSubmit={filterSearch}
-      >
-        <div className="whitespace-nowrap flex text-center justify-center items-center  transition-all duration-3000 bg-transparent text-inherit  py-3 px-5 border border-r-0 rounded-l ">
+        className="flex justify-center items-center  flex-nowrap w-full whitespace-nowrap text-center  transition-all 
+        duration-3000 bg-transparent text-inherit  border text-[#3e4153] border-r-0 rounded-l md:border-r-[1px] 
+        md:rounded lg:flex-wrap lg:flex-col lg:items-start lg:justify-start lg:border-none"
+        onSubmit={filterSearch}>
           <input
             type="text"
             placeholder="What are you looking for?"
-            className="flex text-center  pr-3"
+            className="flex text-start  py-3 px-5 min-w-[150px] w-full text-[#3e4153] lg:border-[1px] lg:rounded
+            lg:drop-shadow"
             name="q"
             value={queryValue}
             onChange={(e) => setQueryValue(e.target.value)}
@@ -63,6 +64,8 @@ export default function SearchBar() {
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
             name="category"
+            className="py-3 px-5 w-48  border-l-[1px] border-height-50 lg:w-full lg:border-[1px] lg:rounded lg:my-5 
+            lg:drop-shadow"
           >
             <option value="all">All categories</option>
             {categoryNames.map((categoryName) => {
@@ -74,10 +77,12 @@ export default function SearchBar() {
               );
             })}
           </select>
-        </div>
+          
         <button
           type="submit"
-          className="whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 bg-transparent text-[#373373] hover:bg-[#373373] font-semibold hover:text-white text-inherit py-3 px-8 border hover:border-transparent rounded "
+          className="w-32  whitespace-nowrap flex justify-center direction-col text-center  transition-all duration-3000 
+          bg-transparent text-[#373373] hover:bg-[#373373] font-semibold hover:text-white text-inherit py-3 px-8 border 
+          hover:border-transparent rounded lg:w-full lg:border-[1px] lg:rounded lg:drop-shadow-sm"
         >
           Search
         </button>

@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+
 module.exports = {
   mode:'jit',
   purge: [
@@ -7,16 +7,16 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'sm': '320px',
-      // => @media (min-width: 320px) { ... }
-      'md': '576px',
-      // => @media (min-width: 580px) { ... }
-      'lg': '768px',
-      // => @media (min-width: 768px) { ... }
-      'xl': '992px',
-      // => @media (min-width: 992px) { ... }
-      '2xl': '1200px',
-      // => @media (min-width: 1200px) { ... }
+      '2xl': {'max': '1200px'},
+      // => @media (max-width: 1535px) { ... }
+      'xl': {'max': '992px'},
+      // => @media (max-width: 1279px) { ... }
+      'lg': {'max': '768px'},
+      // => @media (max-width: 1023px) { ... }
+      'md': {'max': '576px'},
+      // => @media (max-width: 767px) { ... }
+      'sm': {'max': '320px'},
+      // => @media (max-width: 639px) { ... }
     },
     extend: {},
   },
