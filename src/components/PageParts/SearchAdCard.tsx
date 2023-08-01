@@ -7,7 +7,8 @@ export default function SearchAdCard({
   title,
   price,
   description,
-  city,
+  address,
+  adCreatedAt,
 }) {
 
   return (
@@ -31,7 +32,7 @@ export default function SearchAdCard({
             </div>
 
             <div className="text-gray-600 text-sm flex justify-center items-center mb-1">
-              <span>{city}</span>
+              <span className="pr-3 mr-3 border-r-[1px] border-gray-300">{address}</span> <span>{adCreatedAt}</span>
             </div>
 
             <div>

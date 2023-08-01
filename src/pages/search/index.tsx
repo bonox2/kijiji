@@ -5,6 +5,7 @@ import SearchAdCard from "../../components/PageParts/SearchAdCard";
 import { SEARCH_ADS_Q } from "../../graphql/queries/SEARCH_ADS_Q";
 import { useState, useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
+import { timeAgo } from "../../utils/timeAgo";
 
 export default function SearchPage() {
   const router = useRouter();
@@ -78,7 +79,10 @@ export default function SearchPage() {
                 const adCoverImg = ad.coverImg?.url;
                 const adLink = "/ads/" + adId;
                 const adDescription = ad.description;
-                const adCity = ad.address?.locality;
+                const city = ad.address;
+                const adDateTime = ad.createdAt;
+                const createdAt = timeAgo(new Date(adDateTime));
+
                 return (
                   <SearchAdCard
                     adLink={adLink}
@@ -87,7 +91,8 @@ export default function SearchPage() {
                     imgLink={adCoverImg}
                     price={price}
                     description={adDescription}
-                    city={adCity}
+                    address={city}
+                    adCreatedAt={createdAt}
                   />
                 );
               })}

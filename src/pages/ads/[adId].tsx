@@ -51,7 +51,7 @@ export default function Product() {
   
   return (
     <>
-      <main className="container w-[1140px] mx-auto px-4 py-5 flex flex-nowrap justify-between ">
+      <main className="container max-w-[1140px] mx-auto px-4 py-5 flex flex-nowrap justify-between ">
         <article className="w-full">
           <section className="flex justify-between items-start ">
             <div>
