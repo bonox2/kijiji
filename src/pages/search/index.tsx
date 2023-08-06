@@ -49,7 +49,7 @@ export default function SearchPage() {
 
   return (
     <>
-      <section className=" container max-w-[1140px] mx-auto px-4 flex justify-between">
+      <section className=" container max-w-[1140px] mx-auto px-4 flex justify-between xl:flex-col">
         <div className="w-56">
           <h2 className="label_header ">Order by</h2>
           <select
@@ -68,7 +68,7 @@ export default function SearchPage() {
             <option value="description/desc">Description (Z to A)</option>
           </select>
         </div>
-        <div className="flex-1 ml-10">
+        <div className="flex-1 ml-10 2xl:ml-0">
           <h1 className="my-6 text-2xl w-full  text-[#42509f]">{category}</h1>
           {ads?.length > 0 && (
             <div className="flex flex-col items-center justify-start">
