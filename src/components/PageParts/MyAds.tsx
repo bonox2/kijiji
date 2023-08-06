@@ -19,7 +19,7 @@ export default function MyAds() {
       <AccNavbar />
       <div className="container max-w-[1140px] mx-auto px-4 ">
         <h1 className=" text-2xl font-bold py-7 mb-2 text-[#3e4153]">My Ads</h1>
-        <section className="flex justify-between items-center ">
+        <section className="flex justify-between items-center md:flex-col md:items-start md:justify-center">
           <div>
             <Link
               href="/account/my-ads/active"
@@ -40,7 +40,7 @@ export default function MyAds() {
 
           <input
             type="text"
-            className=" rounded  px-6 py-3 border-[1px] border-[#d2d3d7]"
+            className=" rounded  px-6 py-3 border-[1px] border-[#d2d3d7] md:mt-6 md:w-full"
             placeholder="Search..."
           />
         </section>
