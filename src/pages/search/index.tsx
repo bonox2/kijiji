@@ -50,7 +50,7 @@ export default function SearchPage() {
   return (
     <>
       <section className=" container max-w-[1140px] mx-auto px-4 flex justify-between xl:flex-col">
-        <div className="w-56">
+        <div className="w-56 mr-5">
           <h2 className="label_header ">Order by</h2>
           <select
             name="sort"
