@@ -8,6 +8,7 @@ import { AD_Q } from "../../graphql/queries/AD_Q";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+
 export default function Product() {
   const router = useRouter();
   const { adId } = router.query;
@@ -53,16 +54,16 @@ export default function Product() {
     <>
       <main className="container max-w-[1140px] mx-auto px-4 py-5 flex flex-nowrap justify-between ">
         <article className="w-full">
-          <section className="flex justify-between items-start ">
+          <section className="flex justify-between items-start xl:flex-wrap ">
             <div>
-              <h1 className="text-[24px] font-bold  text-[#273169]  ad_title">
+              <h1 className="text-[24px] font-bold  text-[#273169] ">
                 {title}
               </h1>
               <span className="text-[24px] text-[#37a864] mb-2">
                 $ {price}
               </span>
             </div>
-              <div className="flex justify-center items-center mb-5 ">
+              <div className="flex justify-center items-center mb-5 xl:mt-6">
                 <svg
                   className="h-10 w-10 mr-3 text-gray-800"
                   xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +168,7 @@ export default function Product() {
                 </div>
               </aside>
             </div>
-            <div className="flex gap-7 w-full overflow-x-auto py-4 ">
+            <div className="flex gap-7 w-full overflow-x-auto py-4 overflow-auto ">
               <Image
                 src={adData.ad.coverImg?.url}
                 alt="Picture of the product"
@@ -184,7 +185,7 @@ export default function Product() {
                   width={150}
                   height={100}
                   onClick={() => setSrc(image.file.url)}
-                  className="cursor-pointer w-[150px] h-[100px] object-cover"
+                  className="cursor-pointer w-[150px] h-[100px] object-cover "
                 />
               ))}
             </div>
