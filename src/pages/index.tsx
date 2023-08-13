@@ -1,44 +1,41 @@
-import { useRouter } from "next/router";
-import Loader from "../components/PageParts/Loader";
-import { useQuery } from "@apollo/client";
-import AdCard from "../components/PageParts/AdCard";
-import Navbar from "../components/PageParts/Navbar";
-import { ADS_CARD_Q } from "../graphql/queries/ADS_CARD_Q ";
+import Link from 'next/link';
+import Button from '../../components/PageParts/Button';
+import Input from '../../components/PageParts/Input';
 
-export default function SearchPage() {
-  const router = useRouter();
-  const { category, q } = router.query;
 
-  const { data, error, loading } = useQuery(ADS_CARD_Q, {});
-
-  if (loading) return <Loader />;
-  if (error) return <div>Something went wrong.</div>;
-
-  const ads = data?.ads || [];
+export default function Login() {
+  
   return (
     <>
-      <Navbar />
-      <section className="container mx-auto max-w-[1140px] px-4">
-        {ads?.length > 0 && (
-          <div className="flex flex-wrap justify-around items-center mt-7 gap-4 w-full">
-              {ads?.map((ad) => {
-                const adName = ad.title;
-                const adId = ad.id;
-                const price = ad.price;
-                const adCoverImg = ad.coverImg?.url;
-                const adLink = "/ads/" + adId;
-                return (
-                  <AdCard
-                    adLink={adLink}
-                    key={adId}
-                    title={adName}
-                    imgLink={adCoverImg}
-                    price={price}
-                  />
-                );
-              })}
-              </div>
-        )}
+      <section className="authorization w-[550px] mx-auto">
+        <div className="container">
+          <div className="authorization_main">
+            <h2 className="authorization_title">Login</h2>
+            <form className="authorization_form" > 
+              <Input
+                required
+                className="input_short input"
+                type="email"
+                name="email"
+                labelText={"Email"}
+                placeHolderText="Enter your email"></Input>
+              <Input
+                required
+                className="input_short input"
+                type="password"
+                name="password"
+                labelText={"Password"}
+                placeHolderText="Enter your password"></Input>
+              <Button type="submit" buttonText="Login"></Button>
+            </form>
+            <span>
+              If you have an account you can{' '}
+              <Link href="/reg" className="link_style">
+                Sign up
+              </Link>
+            </span>
+          </div>
+        </div>
       </section>
     </>
   );

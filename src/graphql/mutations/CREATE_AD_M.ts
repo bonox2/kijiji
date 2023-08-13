@@ -9,6 +9,7 @@ export const CREATE_AD_M = gql`
     $address: String!
     $description: String
     $coverImg: Upload!
+    $sellerId: ID!
   ) {
     createAd(
       data: {
@@ -19,6 +20,7 @@ export const CREATE_AD_M = gql`
         address: $address
         description: $description
         coverImg: { upload: $coverImg }
+        seller: { connect: { id: $sellerId } }
       }
     ) {
       id

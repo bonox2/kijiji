@@ -6,18 +6,21 @@ import { useState, useRef, useEffect } from 'react';
 import CategorySelect from '../../components/PageParts/CategorySelect';
 import { CATEGORIES_Q } from '../../graphql/queries/CATEGORIES_Q';
 import { useQuery } from '@apollo/client';
-import { useCustomMutation } from '../../hooks/useCustomMutation';
 import { CREATE_IMAGES_M } from '../../graphql/mutations/CREATE_IMAGES_M';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 export default function PostAdPage() {
   const formRef = useRef(null);
+  const currentUser = useCurrentUser()
+
+  const sellerId = currentUser?.seller?.id;
 
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const [createAdMutation, { data: createdAdData, error: createdAdError }] =
-    useCustomMutation(CREATE_AD_M);
+    useMutation(CREATE_AD_M);
   const [createImagesMutation, { error: createImagesError }] =
-    useCustomMutation(CREATE_IMAGES_M);
+    useMutation(CREATE_IMAGES_M);
 
   const { data: categoriesData, error: categoriesError } =
     useQuery(CATEGORIES_Q);
@@ -52,7 +55,8 @@ export default function PostAdPage() {
         address,
         price,
         createdAt: new Date().toISOString(),
-        coverImg
+        coverImg,
+        sellerId
       }
     });
     console.log(createdAdResponse);
